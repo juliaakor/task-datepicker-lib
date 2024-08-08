@@ -1,55 +1,58 @@
-import { RollupOptions } from 'rollup';
-import commonjs from "@rollup/plugin-commonjs";
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-import terser from '@rollup/plugin-terser'
 import { babel } from '@rollup/plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
+import { RollupOptions } from 'rollup';
+import { dts } from 'rollup-plugin-dts';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import { dts } from "rollup-plugin-dts";
 
 export default [
-	{
-		input: './src/index.ts',
-    preserveModules: true,
-		output: [
+  {
+    external: ['react', 'react-dom'],
+    input: './src/index.ts',
+    output: [
       {
         dir: 'build',
-        format: 'esm',
         exports: 'named',
+        format: 'esm',
         sourcemap: true,
       },
       {
+        exports: 'named',
         file: 'build/index.cjs.js',
         format: 'cjs',
-        exports: 'named',
         sourcemap: true,
       },
-		],
-		plugins: [
-			peerDepsExternal(),
+    ],
+    plugins: [
+      peerDepsExternal(),
       nodeResolve(),
       commonjs(),
-			typescript({
-        tsconfig: './tsconfig.json',
+      typescript({
         declaration: true,
-				declarationDir: 'build',
-				sourceMap: false,
+        declarationDir: 'build',
+        sourceMap: false,
+        tsconfig: './tsconfig.json',
       }),
       terser(),
-			babel({
-				configFile: './.babelrc',
-				babelHelpers: 'runtime',
-				exclude: 'node_modules/**',
-			}),
-		],
-		external: ['react', 'react-dom'],
-	},
+      babel({
+        babelHelpers: 'runtime',
+        configFile: './.babelrc',
+        exclude: 'node_modules/**',
+      }),
+    ],
+    preserveModules: true,
+  },
   {
-    input: "build/src/index.d.ts",
-    output: [{
-      file: "build/index.d.ts", format: "esm"
-    }],
-    plugins: [ dts() ],
     external: [/\.css$/],
+    input: 'build/src/index.d.ts',
+    output: [
+      {
+        file: 'build/index.d.ts',
+        format: 'esm',
+      },
+    ],
+    plugins: [dts()],
   },
 ] as RollupOptions;
