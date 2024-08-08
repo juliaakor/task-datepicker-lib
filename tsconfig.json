@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "allowJs": true,
+    "jsx": "preserve",
+    "lib": ["DOM", "DOM.Iterable", "ES6"],
+    "moduleResolution": "node",
+    "outDir": "./build",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "incremental": true,
+    "paths": {
+      "@/*": ["./src/*"],
+    }
+  },
+  "include": ["src/**/*", "**/*.ts", "**/*.tsx", "types.d.ts"],
+  "exclude": ["./node_modules", "build"]
+}
