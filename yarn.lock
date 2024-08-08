@@ -7287,7 +7287,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0, react@npm:^18.3.1":
+"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0, react@npm:^18.0.0, react@npm:^18.3.1":
   version: 18.3.1
   resolution: "react@npm:18.3.1"
   dependencies:
@@ -8176,8 +8176,8 @@ __metadata:
     tslib: ^2.6.3
     typescript: ^5.5.4
   peerDependencies:
-    react: ^18
-    react-dom: ^18
+    react: ^18.0.0
+    react-dom: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -8675,7 +8675,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:5":
+"webpack@npm:5, webpack@npm:>=2":
   version: 5.93.0
   resolution: "webpack@npm:5.93.0"
   dependencies:
