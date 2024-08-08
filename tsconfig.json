@@ -9,18 +9,13 @@
     "strict": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "baseUrl": ".",
     "rootDir": ".",
-    "sourceMap": true,
     "skipLibCheck": true,
     "isolatedModules": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
-    "incremental": true,
     "paths": {
       "@/*": ["./src/*"],
     }
