@@ -1,27 +1,27 @@
-import { RollupOptions } from 'rollup';
+import { babel } from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
-import { babel } from '@rollup/plugin-babel';
 import typescript from '@rollup/plugin-typescript';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import { RollupOptions } from 'rollup';
 import { dts } from 'rollup-plugin-dts';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 export default [
   {
+    external: ['react', 'react-dom'],
     input: './src/index.ts',
-    preserveModules: true,
     output: [
       {
         dir: 'build',
-        format: 'esm',
         exports: 'named',
+        format: 'esm',
         sourcemap: true,
       },
       {
+        exports: 'named',
         file: 'build/index.cjs.js',
         format: 'cjs',
-        exports: 'named',
         sourcemap: true,
       },
     ],
@@ -30,21 +30,22 @@ export default [
       nodeResolve(),
       commonjs(),
       typescript({
-        tsconfig: './tsconfig.json',
         declaration: true,
         declarationDir: 'build',
         sourceMap: false,
+        tsconfig: './tsconfig.json',
       }),
       terser(),
       babel({
-        configFile: './.babelrc',
         babelHelpers: 'runtime',
+        configFile: './.babelrc',
         exclude: 'node_modules/**',
       }),
     ],
-    external: ['react', 'react-dom'],
+    preserveModules: true,
   },
   {
+    external: [/\.css$/],
     input: 'build/src/index.d.ts',
     output: [
       {
@@ -53,6 +54,5 @@ export default [
       },
     ],
     plugins: [dts()],
-    external: [/\.css$/],
   },
 ] as RollupOptions;
