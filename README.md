@@ -9,6 +9,7 @@ Install dependencies with:
 
 ```bash
 yarn
+yarn prepare
 ```
 
 Run the development build with:
@@ -47,5 +48,6 @@ At the moment, the following scripts can be run within the project:
 - lint:fix - fix all eslint errors and warnings available for fixing;
 - prettier - check for all code style issues in files;
 - prettier:fix - fix all the code style issues in files;
+- prepare - to setup husky hooks;
 
 **Note**: The following commands use the `.gitignore` file instead of their own ignore file: `lint`, `lint:fix`, `prettier`, `prettier:fix`.
