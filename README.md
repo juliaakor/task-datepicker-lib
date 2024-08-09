@@ -12,6 +12,14 @@ yarn
 yarn prepare
 ```
 
+Create a .env file:
+
+```bash
+touch .env.local
+```
+
+Add environment variables to this file. An example of the required environment variables can be found in the .env.draft file
+
 Run the development build with:
 
 ```bash
@@ -49,5 +57,6 @@ At the moment, the following scripts can be run within the project:
 - prettier - check for all code style issues in files;
 - prettier:fix - fix all the code style issues in files;
 - prepare - to setup husky hooks;
+- chromatic - to run new build and publish storybook to chromatic;
 
 **Note**: The following commands use the `.gitignore` file instead of their own ignore file: `lint`, `lint:fix`, `prettier`, `prettier:fix`.
