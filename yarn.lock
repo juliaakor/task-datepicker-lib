@@ -4640,7 +4640,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:^11.4.0":
+"chromatic@npm:^11.4.0, chromatic@npm:^11.7.0":
   version: 11.7.0
   resolution: "chromatic@npm:11.7.0"
   peerDependencies:
@@ -4976,7 +4976,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.2, cross-spawn@npm:^7.0.3":
+"cross-env@npm:^7.0.3":
+  version: 7.0.3
+  resolution: "cross-env@npm:7.0.3"
+  dependencies:
+    cross-spawn: ^7.0.1
+  bin:
+    cross-env: src/bin/cross-env.js
+    cross-env-shell: src/bin/cross-env-shell.js
+  checksum: 26f2f3ea2ab32617f57effb70d329c2070d2f5630adc800985d8b30b56e8bf7f5f439dd3a0358b79cee6f930afc23cf8e23515f17ccfb30092c6b62c6b630a79
+  languageName: node
+  linkType: hard
+
+"cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.1, cross-spawn@npm:^7.0.2, cross-spawn@npm:^7.0.3":
   version: 7.0.3
   resolution: "cross-spawn@npm:7.0.3"
   dependencies:
@@ -5373,6 +5385,34 @@ __metadata:
   dependencies:
     is-obj: ^2.0.0
   checksum: d5775790093c234ef4bfd5fbe40884ff7e6c87573e5339432870616331189f7f5d86575c5b5af2dcf0f61172990f4f734d07844b1f23482fff09e3c4bead05ea
+  languageName: node
+  linkType: hard
+
+"dotenv-cli@npm:^7.4.2":
+  version: 7.4.2
+  resolution: "dotenv-cli@npm:7.4.2"
+  dependencies:
+    cross-spawn: ^7.0.3
+    dotenv: ^16.3.0
+    dotenv-expand: ^10.0.0
+    minimist: ^1.2.6
+  bin:
+    dotenv: cli.js
+  checksum: 48d887ea9be08f7453dc87d6c938311989e951d0b43028eadcbaff3be1ca56180f8c38b8f932fc2e59f0210e59f4b5c59cf8a34da3e6c92f63fe6d7ce4f09f65
+  languageName: node
+  linkType: hard
+
+"dotenv-expand@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "dotenv-expand@npm:10.0.0"
+  checksum: 2a38b470efe0abcb1ac8490421a55e1d764dc9440fd220942bce40965074f3fb00b585f4346020cb0f0f219966ee6b4ee5023458b3e2953fe5b3214de1b314ee
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^16.3.0":
+  version: 16.4.5
+  resolution: "dotenv@npm:16.4.5"
+  checksum: 301a12c3d44fd49888b74eb9ccf9f07a1f5df43f489e7fcb89647a2edcd84c42d6bc349dc8df099cd18f07c35c7b04685c1a4f3e6a6a9e6b30f8d48c15b7f49c
   languageName: node
   linkType: hard
 
@@ -10485,6 +10525,9 @@ __metadata:
     "@types/react": ^18.3.3
     "@types/react-dom": ^18.3.0
     "@types/rollup-plugin-peer-deps-external": ^2.2.5
+    chromatic: ^11.7.0
+    cross-env: ^7.0.3
+    dotenv-cli: ^7.4.2
     eslint: ^8.5.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-prettier: ^9.1.0

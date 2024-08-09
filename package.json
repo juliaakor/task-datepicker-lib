@@ -22,7 +22,8 @@
     "lint:fix": "npx eslint --ignore-path .gitignore . --fix",
     "prettier": "prettier src --check --ignore-path .gitignore .",
     "prettier:fix": "prettier src --write --ignore-path .gitignore .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "chromatic": "cross-env dotenv npx chromatic --project-token=%CHROMATIC_PROJECT_TOKEN%"
   },
   "keywords": [],
   "author": "",
@@ -58,6 +59,9 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/rollup-plugin-peer-deps-external": "^2.2.5",
+    "chromatic": "^11.7.0",
+    "cross-env": "^7.0.3",
+    "dotenv-cli": "^7.4.2",
     "eslint": "^8.5.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.0",
