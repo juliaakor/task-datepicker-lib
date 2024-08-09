@@ -2139,6 +2139,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rollup/plugin-eslint@npm:^9.0.5":
+  version: 9.0.5
+  resolution: "@rollup/plugin-eslint@npm:9.0.5"
+  dependencies:
+    "@rollup/pluginutils": ^5.0.1
+    eslint: ^8.24.0
+  peerDependencies:
+    rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
+  peerDependenciesMeta:
+    rollup:
+      optional: true
+  checksum: fe0b39c2bea412e1743d5d7ddd69c8fcd12bbcd5af6f65cf66394de6bfa78553ca288cdd3a1dc2dee6a4369bd68a8ea3758bb02514f4be37561563e9ec66a79e
+  languageName: node
+  linkType: hard
+
 "@rollup/plugin-node-resolve@npm:^15.2.3":
   version: 15.2.3
   resolution: "@rollup/plugin-node-resolve@npm:15.2.3"
@@ -6082,7 +6097,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.5.0":
+"eslint@npm:^8.24.0, eslint@npm:^8.5.0":
   version: 8.57.0
   resolution: "eslint@npm:8.57.0"
   dependencies:
@@ -10509,6 +10524,7 @@ __metadata:
     "@commitlint/config-conventional": ^19.2.2
     "@rollup/plugin-babel": ^6.0.4
     "@rollup/plugin-commonjs": ^26.0.1
+    "@rollup/plugin-eslint": ^9.0.5
     "@rollup/plugin-node-resolve": ^15.2.3
     "@rollup/plugin-terser": ^0.4.4
     "@rollup/plugin-typescript": ^11.1.6

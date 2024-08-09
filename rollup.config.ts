@@ -1,5 +1,6 @@
 import { babel } from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
+import eslint from '@rollup/plugin-eslint';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
@@ -39,6 +40,9 @@ export default [
       babel({
         babelHelpers: 'runtime',
         configFile: './.babelrc',
+        exclude: 'node_modules/**',
+      }),
+      eslint({
         exclude: 'node_modules/**',
       }),
     ],
