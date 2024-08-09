@@ -21,7 +21,8 @@
     "lint": "npx eslint --max-warnings=0 --ignore-path .gitignore .",
     "lint:fix": "npx eslint --ignore-path .gitignore . --fix",
     "prettier": "prettier src --check --ignore-path .gitignore .",
-    "prettier:fix": "prettier src --write --ignore-path .gitignore ."
+    "prettier:fix": "prettier src --write --ignore-path .gitignore .",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -68,6 +69,7 @@
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-storybook": "^0.8.0",
+    "husky": "^9.1.4",
     "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
