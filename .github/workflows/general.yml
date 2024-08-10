@@ -56,8 +56,18 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-
+
       - name: Install dependencies
         run: yarn install
 
+      - name: Run Jest tests
+        run: yarn test
       - name: Run tests (placeholder)
         run: echo "No tests available. Add tests here."
