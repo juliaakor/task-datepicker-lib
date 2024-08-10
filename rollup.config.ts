@@ -10,7 +10,7 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 export default [
   {
-    external: ['react', 'react-dom'],
+    external: ['react', 'react-dom', 'styled-components'],
     input: './src/index.ts',
     output: [
       {
@@ -42,6 +42,7 @@ export default [
         configFile: './.babelrc',
         exclude: 'node_modules/**',
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        plugins: ['babel-plugin-styled-components'],
       }),
       eslint({
         exclude: 'node_modules/**',
