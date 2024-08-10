@@ -69,5 +69,6 @@ jobs:
 
       - name: Run Jest tests
         run: yarn test
-      - name: Run tests (placeholder)
+
+      - name: Run tests Cypress (placeholder)
         run: echo "No tests available. Add tests here."
