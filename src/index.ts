@@ -1,1 +1,5 @@
-export default 'test export';
+import { Calendar } from '@components/Calendar';
+
+export default {
+  Calendar,
+};

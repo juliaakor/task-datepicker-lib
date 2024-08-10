@@ -33,7 +33,7 @@ export default [
       typescript({
         declaration: true,
         declarationDir: 'build',
-        sourceMap: false,
+        sourceMap: true,
         tsconfig: './tsconfig.json',
       }),
       terser(),
@@ -41,6 +41,7 @@ export default [
         babelHelpers: 'runtime',
         configFile: './.babelrc',
         exclude: 'node_modules/**',
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       }),
       eslint({
         exclude: 'node_modules/**',
