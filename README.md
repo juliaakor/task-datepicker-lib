@@ -58,5 +58,9 @@ At the moment, the following scripts can be run within the project:
 - prettier:fix - fix all the code style issues in files;
 - prepare - to setup husky hooks;
 - chromatic - to run new build and publish storybook to chromatic;
+- test - run tests and watch files for changes to rerun tests related to changed files;
+- test:all - run tests and watch files for changes to rerun all tests when something changes;
+- test:ci - running tests in a ci environment;
+- test:coverage - delete the coverage folder and open a new coverage report after the tests have been executed;
 
 **Note**: The following commands use the `.gitignore` file instead of their own ignore file: `lint`, `lint:fix`, `prettier`, `prettier:fix`.
