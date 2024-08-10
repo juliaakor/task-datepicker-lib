@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Container } from './styled';
+
 export const Calendar = () => {
-  return <div>Calendar</div>;
+  return <Container>Calendar</Container>;
 };

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 
-import { Calendar } from '../components';
+import { Calendar } from '@components/index';
 
 const meta = {
   args: { onClick: fn() },

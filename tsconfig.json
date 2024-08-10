@@ -17,7 +17,8 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"]
     }
   },
   "include": ["src/**/*", "**/*.ts", "**/*.tsx", "types.d.ts"],
