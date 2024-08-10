@@ -23,11 +23,11 @@
     "prettier": "prettier src --check --ignore-path .gitignore .",
     "prettier:fix": "prettier src --write --ignore-path .gitignore .",
     "prepare": "husky",
+    "chromatic": "cross-env dotenv npx chromatic --project-token=%CHROMATIC_PROJECT_TOKEN%",
     "test": "jest --watch",
     "test:all": "jest --watchAll",
     "test:ci": "jest --ci",
-    "test:coverage": "rm -rf coverage && jest --coverage && open coverage/lcov-report/index.html",
-    "chromatic": "cross-env dotenv npx chromatic --project-token=%CHROMATIC_PROJECT_TOKEN%"
+    "test:coverage": "rm -rf coverage && jest --coverage && open coverage/lcov-report/index.html"
   },
   "keywords": [],
   "author": "",

@@ -92,6 +92,7 @@
     "react/function-component-definition": 0,
     "react/jsx-props-no-spreading": 0,
     "react/require-default-props": "off",
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "no-shadow": 0
   }
 }

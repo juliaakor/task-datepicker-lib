@@ -18,7 +18,9 @@
     "noImplicitAny": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@type/*": ["./src/types/*"],
+      "@services/*": ["./src/services/*"]
     }
   },
   "include": ["src/**/*", "**/*.ts", "**/*.tsx", "types.d.ts"],
