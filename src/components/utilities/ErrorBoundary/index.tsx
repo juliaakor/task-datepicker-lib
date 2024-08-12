@@ -1,6 +1,6 @@
 import React, { Component, ErrorInfo } from 'react';
 
-import { ErrorBoundaryWrapper } from './styles';
+import { ErrorBoundaryWrapper } from './styled';
 import { ErrorBoundaryProps, ErrorState } from './types';
 
 export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorState> {
