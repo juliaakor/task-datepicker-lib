@@ -18,6 +18,7 @@
     "noImplicitAny": true,
     "paths": {
       "@/*": ["./src/*"],
+      "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
       "@type/*": ["./src/types/*"],
       "@services/*": ["./src/services/*"]
