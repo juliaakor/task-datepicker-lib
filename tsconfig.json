@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES6",
     "allowJs": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "lib": ["DOM", "DOM.Iterable", "ES6"],
     "moduleResolution": "node",
     "outDir": "./build",

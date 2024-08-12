@@ -3,7 +3,7 @@ import type { Config } from '@jest/types';
 const config: Config.InitialOptions = {
   collectCoverage: true,
   collectCoverageFrom: ['src/**/*.ts', '!**/styled.ts'],
-  coveragePathIgnorePatterns: ['/node_modules/', '/build/', '/src/stories/', '/src/assets/'],
+  coveragePathIgnorePatterns: ['/node_modules/', '/build/', '/src/stories/'],
   coverageThreshold: {
     global: {
       branches: 70,
@@ -14,6 +14,7 @@ const config: Config.InitialOptions = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   moduleNameMapper: {
+    '^@assets/(.*)$': '<rootDir>/src/assets/$1',
     '^@components/(.*)$': '<rootDir>/src/components/$1',
     '^@services/(.*)$': '<rootDir>/src/services/$1',
     '^@styles/(.*)$': '<rootDir>/src/styles/$1',
