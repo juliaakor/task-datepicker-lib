@@ -5,3 +5,7 @@ export interface WithCalendarViewProps {
   setView: (view: View) => void;
   availableViews: View[];
 }
+
+export interface CalendarViewServiceProps {
+  supportedViews: View[];
+}
