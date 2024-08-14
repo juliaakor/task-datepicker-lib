@@ -43,7 +43,6 @@ export class TaskManagerService {
     const isUpdated = updatedTasks.length !== this.tasks[date].length;
 
     if (updatedTasks.length === 0) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { [date]: _, ...restTasks } = this.tasks;
       this.tasks = restTasks;
     } else if (isUpdated) {
