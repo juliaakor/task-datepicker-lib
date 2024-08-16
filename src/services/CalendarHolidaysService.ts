@@ -1,6 +1,5 @@
 import { getYearRange } from '@lib/calendar/getYearRange';
-import { fetchDefaultHolidays } from '@lib/utils/holidays/fetchDefaultHolidays';
-import { mergeHolidays } from '@lib/utils/holidays/mergeHolidays';
+import { fetchDefaultHolidays, mergeHolidays } from '@lib/utils/holidays';
 import { Holiday } from '@type/index';
 
 const thisYearRange = getYearRange();
