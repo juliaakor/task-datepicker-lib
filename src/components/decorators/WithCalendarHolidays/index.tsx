@@ -21,6 +21,7 @@ export const withCalendarHolidays = <P extends object>(
     useEffect(() => {
       const fetchHolidays = async () => {
         const holidays = await calendarHolidayService.getAllHolidays();
+
         setHolidays(holidays);
       };
 
@@ -30,6 +31,7 @@ export const withCalendarHolidays = <P extends object>(
     const handleUpdateRange = async (startDate: string, endDate: string) => {
       await calendarHolidayService.updateDateRange(startDate, endDate);
       const holidays = await calendarHolidayService.getAllHolidays();
+
       setHolidays(holidays);
     };
 

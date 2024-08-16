@@ -29,9 +29,11 @@ export class CalendarHolidaysService {
   private async initializeHolidays() {
     if (this.includeDefaultHolidays) {
       await this.fetchAndMergeHolidays();
-    } else {
-      this.holidays = [...this.customHolidays];
+
+      return;
     }
+
+    this.holidays = [...this.customHolidays];
   }
 
   private async fetchAndMergeHolidays() {
@@ -42,11 +44,14 @@ export class CalendarHolidaysService {
   public async updateDateRange(startDate: string, endDate: string) {
     this.startDate = startDate;
     this.endDate = endDate;
+
     if (this.includeDefaultHolidays) {
       await this.fetchAndMergeHolidays();
-    } else {
-      this.holidays = [...this.customHolidays];
+
+      return;
     }
+
+    this.holidays = [...this.customHolidays];
   }
 
   public async getAllHolidays(): Promise<Holiday[]> {
