@@ -1,10 +1,13 @@
 export const colors = {
+  bgButtonOnHover: 'rgba(242, 248, 255, 0.6)',
   bgDayOnHover: 'rgba(241, 241, 241, 1)',
   bgDaySelected: 'rgba(47, 128, 237, 1)',
   bgRangeEnd: 'rgba(47, 128, 237, 1)',
   bgRangeInBetween: 'rgba(47, 128, 237, 0.1)',
   bgRangeStart: 'rgba(47, 128, 237, 0.6)',
   disabledDayText: 'rgba(170, 170, 170, 1)',
+  iconDarkColorHover: 'rgb(175, 167, 167)',
+  iconLightColorHover: 'rgb(127, 124, 124)',
   primaryBorder: 'rgba(221, 221, 221, 1)',
   primaryText: 'rgba(51, 51, 51, 1)',
   rangeInBetweenText: 'rgba(47, 128, 237, 1)',
