@@ -3,6 +3,7 @@ import { withCalendarHolidays } from '@components/decorators/WithCalendarHoliday
 import { withCalendarView } from '@components/decorators/WithCalendarView';
 import { withCustomTheme } from '@components/decorators/WithCustomTheme';
 import { withTaskManager } from '@components/decorators/WithTaskManager';
+import { withWeekendManager } from '@components/decorators/WithWeekendManager';
 
 describe('components folder index file exports', () => {
   it('should export withCalendarHolidays from index', () => {
@@ -15,6 +16,10 @@ describe('components folder index file exports', () => {
 
   it('should export withCustomTheme from index', () => {
     expect(index.withCustomTheme).toBe(withCustomTheme);
+  });
+
+  it('should export withWeekendManager from index', () => {
+    expect(index.withWeekendManager).toBe(withWeekendManager);
   });
 
   it('should export withTaskManager from index', () => {
