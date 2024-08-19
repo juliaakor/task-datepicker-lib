@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES6",
     "allowJs": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "lib": ["DOM", "DOM.Iterable", "ES6"],
     "moduleResolution": "node",
     "outDir": "./build",
@@ -18,8 +18,11 @@
     "noImplicitAny": true,
     "paths": {
       "@/*": ["./src/*"],
+      "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
+      "@styles/*": ["./src/styles/*"],
       "@type/*": ["./src/types/*"],
+      "@lib/*": ["./src/lib/*"],
       "@services/*": ["./src/services/*"]
     }
   },

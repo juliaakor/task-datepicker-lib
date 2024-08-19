@@ -3,12 +3,12 @@ import React, { useState, useMemo } from 'react';
 import { CalendarViewService } from '@services/CalendarViewService';
 import { View } from '@type/index';
 
-import { WithCalendarViewProps } from './types';
+import { CalendarViewServiceProps, WithCalendarViewProps } from './types';
 
 export const withCalendarView = <P extends object>(
   WrappedComponent: React.ComponentType<P & WithCalendarViewProps>
 ) => {
-  const WithCalendarView = (props: Omit<P, keyof WithCalendarViewProps> & { supportedViews: View[] }) => {
+  const WithCalendarView = (props: Omit<P, keyof WithCalendarViewProps> & CalendarViewServiceProps) => {
     const { supportedViews, ...restProps } = props;
 
     const calendarViewService = useMemo(() => new CalendarViewService(supportedViews), [supportedViews]);
