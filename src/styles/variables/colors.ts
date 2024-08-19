@@ -6,10 +6,12 @@ export const colors = {
   bgRangeInBetween: 'rgba(47, 128, 237, 0.1)',
   bgRangeStart: 'rgba(47, 128, 237, 0.6)',
   disabledDayText: 'rgba(170, 170, 170, 1)',
+  errorBorder: 'rgb(211 72 72)',
   iconDarkColorHover: 'rgb(175, 167, 167)',
   iconLightColorHover: 'rgb(127, 124, 124)',
   primaryBorder: 'rgba(221, 221, 221, 1)',
   primaryText: 'rgba(51, 51, 51, 1)',
   rangeInBetweenText: 'rgba(47, 128, 237, 1)',
   selectedDayText: 'rgba(255, 255, 255, 1)',
+  transparent: 'transparent',
 };

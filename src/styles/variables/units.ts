@@ -17,5 +17,7 @@ export const size = {
 export const width = {
   calendarItem: 32,
   full: '100%',
+  half: '50%',
+  iconSize: 16,
   minCalerndar: 250,
 };
