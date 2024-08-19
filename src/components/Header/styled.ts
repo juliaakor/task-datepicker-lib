@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
-  min-width: ${({ theme }) => theme.width.full};
+  ${({ theme }) => `
+    min-width: ${theme.width.full};
+    padding: ${theme.size.large}px;
+    font-size: ${theme.fontSize.medium}px;
+    font-weight: ${theme.fontWeight.bold};
+  `}
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${({ theme }) => theme.size.large}px;
-  font-size: ${({ theme }) => theme.fontSize.medium}px;
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
 `;
 
 export const DateTitle = styled.span`

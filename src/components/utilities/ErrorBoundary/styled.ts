@@ -4,6 +4,9 @@ export const ErrorBoundaryWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+
+  ${({ theme }) => `
+    width: ${theme.width.full};
+    height: ${theme.width.full};
+  `}
 `;
