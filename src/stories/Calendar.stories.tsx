@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
-import { withCustomTheme } from '@components/decorators';
 import { Calendar } from '@components/index';
+import { withCustomTheme } from '@decorators/index';
 
 const meta = {
   args: {},
