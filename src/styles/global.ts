@@ -36,4 +36,22 @@ export const GlobalStyles = createGlobalStyle`
 			cursor: pointer;
 		}
 	}
+
+  ::-webkit-scrollbar {
+    width: 0.3rem;
+    height: 0.75rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(136, 136, 136);
+    border: 2px solid lighten(rgb(136, 136, 136), 3%);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: lighten(rgb(136, 136, 136), 3%);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgb(241, 241, 241);
+  }
 `;
