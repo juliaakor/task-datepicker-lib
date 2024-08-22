@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from 'react';
 
 import { CalendarIcon, ClearIcon } from '@assets/index';
+import { formatDateInput } from '@lib/utils/format';
 
 import { InputWrapper, InputItem, Label, CalendarButtonWrapper, ClearButtonWrapper } from './styled';
 import { InputProps } from './types';
@@ -12,21 +13,29 @@ export const Input = ({
   onChange,
   onFocus,
   placeholder = 'Choose Date',
+  toggleCalendar,
   value,
 }: InputProps) => {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.value);
+    const input = e.target.value;
+    const formattedInputValue = formatDateInput(input);
+
+    onChange(formattedInputValue);
   };
 
   const handleClearInput = () => {
     onChange('');
   };
 
+  const handleCalendarVisibility = () => {
+    toggleCalendar();
+  };
+
   return (
     <div>
       <Label>{name}</Label>
       <InputWrapper>
-        <CalendarButtonWrapper>
+        <CalendarButtonWrapper onClick={handleCalendarVisibility}>
           <CalendarIcon />
         </CalendarButtonWrapper>
         <InputItem
@@ -37,6 +46,8 @@ export const Input = ({
           $isError={isError}
           onChange={handleInputChange}
           onFocus={onFocus}
+          autoComplete="off"
+          maxLength={10}
         />
         {value && (
           <ClearButtonWrapper onClick={handleClearInput}>

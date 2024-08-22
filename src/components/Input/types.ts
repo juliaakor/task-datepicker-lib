@@ -6,4 +6,5 @@ export interface InputProps {
   isError?: boolean;
   onChange: (value: string) => void;
   onFocus: () => void;
+  toggleCalendar: () => void;
 }
