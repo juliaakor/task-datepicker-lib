@@ -20,4 +20,5 @@ export const width = {
   half: '50%',
   iconSize: 16,
   minCalerndar: 250,
+  tooltipSpacing: '125%',
 };

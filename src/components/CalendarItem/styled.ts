@@ -7,23 +7,23 @@ export const CalendarItemWrapper = styled.div<{
   $rangeEnd?: boolean;
   $rangeInBetween?: boolean;
   $isDisabled?: boolean;
+  $isHeaderItem?: boolean;
+  $hasTasks?: boolean;
+  $hasHolidays?: boolean;
 }>`
-  ${({ theme }) => `
-    width: ${theme.width.calendarItem}px;
-    height: ${theme.width.calendarItem}px;
+  position: relative;
+  align-content: center;
+
+  ${({ $hasHolidays, $isDisabled, $isHeaderItem, theme }) => `
+    min-width: ${theme.width.calendarItem}px;
+    min-height: ${theme.width.calendarItem}px;
     margin: ${theme.size.reset};
-    align-content: center;
-    border: ${theme.colors.primaryBorder};
-    font-size: ${theme.fontSize.reset}px;
-    font-weight: ${theme.fontWeight.semiBold};
+    font-size: ${$isHeaderItem ? theme.fontSize.medium : theme.fontSize.reset}px;
+    font-weight: ${$isHeaderItem ? theme.fontWeight.bold : theme.fontWeight.semiBold};
     line-height: ${theme.lineHeight.medium}px;
+    cursor: ${$isDisabled || $isHeaderItem ? 'default' : 'pointer'};
+    border: ${theme.size.reset}px solid ${$hasHolidays ? theme.colors.bgDaySelected : theme.colors.transparent};
   `}
-
-  cursor: ${({ $isDisabled }) => {
-    if ($isDisabled) return 'default';
-
-    return 'pointer';
-  }};
 
   background: ${({ $rangeEnd, $rangeInBetween, $rangeStart, $selected, theme }) => {
     if ($selected) return theme.colors.bgDaySelected;
@@ -54,13 +54,49 @@ export const CalendarItemWrapper = styled.div<{
   }};
 
   &:hover {
-    background: ${({ $rangeEnd, $rangeInBetween, $rangeStart, $selected, theme }) => {
+    background: ${({ $isDisabled, $isHeaderItem, $rangeEnd, $rangeInBetween, $rangeStart, $selected, theme }) => {
       if ($selected) return theme.colors.bgDaySelected;
       if ($rangeStart) return theme.colors.bgRangeStart;
       if ($rangeEnd) return theme.colors.bgRangeEnd;
       if ($rangeInBetween) return theme.colors.bgRangeInBetween;
+      if ($isHeaderItem || $isDisabled) return theme.colors.transparent;
 
       return theme.colors.bgButtonOnHover;
     }};
   }
+
+  ${({ $hasTasks, theme }) =>
+    $hasTasks &&
+    `
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: ${theme.size.reset}px;
+      left: ${theme.width.half};
+      transform: translateX(-${theme.width.half});
+      width:  ${theme.size.medium}px;
+      height: ${theme.size.medium}px;
+      background-color: ${theme.colors.itemHasTasks};
+      border-radius: ${theme.width.half};
+    }
+  `}
+`;
+
+export const Tooltip = styled.div<{ $visible: boolean }>`
+  ${({ $visible, theme }) => `
+    position: absolute;
+    text-align: center;
+    display: ${$visible ? 'block' : 'none'};
+    background-color: ${theme.colors.bgTooltip};
+    color: ${theme.colors.selectedDayText};
+    padding: ${theme.size.mediumX}px;
+    border-radius: ${theme.size.small}px;
+    bottom: ${theme.width.tooltipSpacing};
+    left: ${theme.width.half};
+    transform: translateX(-${theme.width.half});
+    z-index: 1;
+    white-space: nowrap;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+ `}
 `;
