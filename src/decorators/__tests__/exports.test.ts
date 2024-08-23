@@ -1,9 +1,9 @@
-import * as index from '@components/decorators';
-import { withCalendarHolidays } from '@components/decorators/WithCalendarHolidays';
-import { withCalendarView } from '@components/decorators/WithCalendarView';
-import { withCustomTheme } from '@components/decorators/WithCustomTheme';
-import { withTaskManager } from '@components/decorators/WithTaskManager';
-import { withWeekendManager } from '@components/decorators/WithWeekendManager';
+import * as index from '@decorators/index';
+import { withCalendarHolidays } from '@decorators/WithCalendarHolidays';
+import { withCalendarView } from '@decorators/WithCalendarView';
+import { withCustomTheme } from '@decorators/WithCustomTheme';
+import { withTaskManager } from '@decorators/WithTaskManager';
+import { withWeekendManager } from '@decorators/WithWeekendManager';
 
 describe('components folder index file exports', () => {
   it('should export withCalendarHolidays from index', () => {

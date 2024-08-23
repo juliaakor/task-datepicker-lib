@@ -1,28 +1,28 @@
-export const borderRadius = {
-  large: 15,
-  medium: 8,
-  none: 0,
-  small: 3,
-};
-
-export const spacing = {
-  large: 15,
-  medium: 11,
-  small: 7,
-  xLarge: 13,
-  xMedium: 10,
-  xSmall: 6,
-  xxLarge: 12,
-  xxMedium: 8,
-  xxSmall: 5,
-};
-
 export const size = {
-  minCalerndarWidth: 250,
+  large: 10,
+  large2X: 13,
+  large3X: 15,
+  largeX: 11,
+  medium: 5,
+  medium2X: 7,
+  medium3X: 8,
+  mediumX: 6,
+  reset: 0,
+  small: 4,
+  small2X: 2,
+  small3X: 3,
+  smallX: 1,
 };
 
-export const borderWidth = {
-  large: 4,
-  medium: 2,
-  thin: 1,
+export const width = {
+  calendarItem: 32,
+  full: '100%',
+  half: '50%',
+  iconSize: 16,
+  maxCalendar: 320,
+  maxModal: 350,
+  maxTooltip: 50,
+  minCalerndar: 250,
+  tooltip: 200,
+  tooltipSpacing: '125%',
 };

@@ -1,14 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import React from 'react';
 
 import { Calendar } from '@components/index';
+import { withCustomTheme } from '@decorators/index';
 
 const meta = {
-  args: { onClick: fn() },
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  args: {},
+  argTypes: {},
   component: Calendar,
+  decorators: [
+    (Story) => {
+      const WrappedStory = withCustomTheme(Story);
+
+      return <WrappedStory />;
+    },
+  ],
   parameters: {
     layout: 'centered',
   },
@@ -20,7 +26,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const CalendarView: Story = {
-  args: {
-    label: 'Calendar',
-  },
+  args: {},
 };
