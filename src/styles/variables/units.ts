@@ -19,6 +19,10 @@ export const width = {
   full: '100%',
   half: '50%',
   iconSize: 16,
+  maxCalendar: 320,
+  maxModal: 350,
+  maxTooltip: 50,
   minCalerndar: 250,
+  tooltip: 200,
   tooltipSpacing: '125%',
 };
