@@ -17,6 +17,7 @@ import {
   Checkbox,
   EditButton,
   TextAreaField,
+  InputContainer,
 } from './styled';
 import { ModalProps } from './types';
 
@@ -79,7 +80,7 @@ export const Modal = ({ onAddTask, onClose, onDeleteTask, onUpdateTask, show, ta
                 <ClearIcon />
               </CloseButton>
             </ModalHeader>
-            <div>
+            <InputContainer>
               <TextAreaField
                 value={editTaskId ? editTaskName : newTask}
                 onChange={editTaskId ? handleEditTextFieldChange : handleTextFieldChange}
@@ -87,9 +88,9 @@ export const Modal = ({ onAddTask, onClose, onDeleteTask, onUpdateTask, show, ta
                 rows={TEXT_AREA_FIELD_ROWS}
               />
               <AddButton onClick={editTaskId ? handleUpdateTask : handleAddTask}>
-                {editTaskId ? 'Update Task' : 'Add Task'}
+                {editTaskId ? 'Update' : 'Add'}
               </AddButton>
-            </div>
+            </InputContainer>
             <ErrorBoundary>
               <TaskList>
                 {tasks.map((task) => (

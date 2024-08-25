@@ -36,20 +36,13 @@ export const ModalHeader = styled.div`
   ${FlexCenterSpaceBetween}
 
   ${({ theme }) => `
-  border-bottom: ${theme.size.smallX}px solid ${theme.colors.dividerBorder};
   padding-bottom: ${theme.size.smallX}px;
   margin-bottom: ${theme.size.mediumX}px;
   `}
 `;
 
-export const InputField = styled.input`
-  ${({ theme }) => `
-    padding: ${theme.size.mediumX}px;
-    margin-bottom: ${theme.size.large}px;
-    border: ${theme.size.smallX}px solid ${theme.colors.dividerBorder};
-    border-radius: ${theme.size.mediumX}px;
-    width: ${theme.width.full};
-  `}
+export const InputContainer = styled.div`
+  display: flex;
 `;
 
 export const AddButton = styled.button`
@@ -57,7 +50,6 @@ export const AddButton = styled.button`
     padding: ${theme.size.mediumX}px ${theme.size.largeX}px;
     background-color: ${theme.colors.bgButtonColor};
     color: ${theme.colors.selectedDayText};
-    border-radius: ${theme.size.mediumX}px;
 
     &:hover {
       box-shadow: ${theme.size.reset} ${theme.size.small}px ${theme.size.mediumX}px ${theme.colors.itemShadow};
@@ -65,7 +57,6 @@ export const AddButton = styled.button`
   `}
 
   border: none;
-  ${IncludePointer}
 `;
 
 export const DeleteButton = styled.button`
