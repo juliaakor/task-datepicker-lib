@@ -3,7 +3,14 @@ import type { Config } from '@jest/types';
 const config: Config.InitialOptions = {
   collectCoverage: true,
   collectCoverageFrom: ['src/**/*.ts', '!**/styled.ts'],
-  coveragePathIgnorePatterns: ['/node_modules/', '/build/', '/src/stories/', '/src/styles/', '/src/lib/theme'],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/build/',
+    '/src/stories/',
+    '/src/styles/',
+    '/src/lib/theme',
+    '/src/hooks/',
+  ],
   coverageThreshold: {
     global: {
       branches: 70,
@@ -19,6 +26,7 @@ const config: Config.InitialOptions = {
     '^@components/(.*)$': '<rootDir>/src/components/$1',
     '^@constants/(.*)$': '<rootDir>/src/constants/$1',
     '^@decorators/(.*)$': '<rootDir>/src/decorators/$1',
+    '^@hooks/(.*)$': '<rootDir>/src/hooks/$1',
     '^@lib/(.*)$': '<rootDir>/src/lib/$1',
     '^@services/(.*)$': '<rootDir>/src/services/$1',
     '^@styles/(.*)$': '<rootDir>/src/styles/$1',

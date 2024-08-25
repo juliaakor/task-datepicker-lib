@@ -24,6 +24,7 @@
       "@type/*": ["./src/types/*"],
       "@constants/*": ["./src/constants/*"],
       "@decorators/*": ["./src/decorators/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@lib/*": ["./src/lib/*"],
       "@services/*": ["./src/services/*"]
     }
