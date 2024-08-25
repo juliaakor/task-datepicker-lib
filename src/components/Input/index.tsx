@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 
 import { CalendarIcon, ClearIcon } from '@assets/index';
-import { formatDateInput } from '@lib/utils/format';
+import { formatDateInput } from '@lib/format';
 
 import { InputWrapper, InputItem, Label, CalendarButtonWrapper, ClearButtonWrapper } from './styled';
 import { InputProps } from './types';

@@ -1,4 +1,4 @@
-import { formatDateInput } from '@lib/utils/format';
+import { formatDateInput } from '@lib/format';
 
 describe('formatDateInput', () => {
   it('should format "202308" to "2023-08"', () => {
