@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { FlexCenterSpaceBetween, IncludePointer, SvgIconOnHover } from '@styles/mixins';
+
 export const ModalOverlay = styled.div<{ $show: boolean }>`
   position: fixed;
   align-items: center;
@@ -31,9 +33,7 @@ export const ModalContainer = styled.div`
 `;
 
 export const ModalHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  ${FlexCenterSpaceBetween}
 
   ${({ theme }) => `
   border-bottom: ${theme.size.smallX}px solid ${theme.colors.dividerBorder};
@@ -65,35 +65,31 @@ export const AddButton = styled.button`
   `}
 
   border: none;
-  cursor: pointer;
+  ${IncludePointer}
 `;
 
 export const DeleteButton = styled.button`
   ${({ theme }) => `
     padding: ${theme.size.mediumX}px ${theme.size.largeX}px;
 
-    & svg:hover path {
-      fill: ${theme.colors.iconLightColorHover};
-    }
+    ${SvgIconOnHover}
   `}
 
   background: none;
   border: none;
-  cursor: pointer;
+  ${IncludePointer}
 `;
 
 export const CloseButton = styled.button`
   ${({ theme }) => `
     padding: ${theme.size.mediumX}px ${theme.size.largeX}px;
 
-    & svg:hover path {
-      fill: ${theme.colors.iconLightColorHover};
-    }
+    ${SvgIconOnHover}
   `}
 
   background: none;
   border: none;
-  cursor: pointer;
+  ${IncludePointer}
 `;
 
 export const Checkbox = styled.input`
@@ -108,13 +104,11 @@ export const EditButton = styled.button`
     padding: ${theme.size.mediumX}px ${theme.size.largeX}px;
     margin-right: ${theme.size.smallX}px;
 
-    & svg:hover path {
-      fill: ${theme.colors.iconLightColorHover};
-    }
+    ${SvgIconOnHover}
   `}
 
   border: none;
-  cursor: pointer;
+  ${IncludePointer}
 `;
 
 export const TextAreaField = styled.textarea`
@@ -133,9 +127,7 @@ export const TaskItem = styled.li`
     padding: ${theme.size.small}px ${theme.size.reset};
   `}
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  ${FlexCenterSpaceBetween}
 `;
 
 export const TaskList = styled.ul`

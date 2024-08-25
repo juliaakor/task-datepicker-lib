@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { IncludePointer, IconButton } from '@styles/mixins';
+
 export const InputWrapper = styled.div`
   position: relative;
 `;
@@ -37,19 +39,14 @@ export const InputItem = styled.input<{ $isError: boolean }>`
 `;
 
 const CalendarButton = css`
+  position: absolute;
+  ${IconButton}
+  ${IncludePointer}
+
   ${({ theme }) => `
     top: ${theme.width.half};
     transform: translateY(-${theme.width.half});
-    width: ${theme.width.iconSize}px;
-    height: ${theme.width.iconSize}px;
-
-    & svg:hover path {
-      fill: ${theme.colors.iconLightColorHover};
-    }
   `}
-
-  position: absolute;
-  cursor: pointer;
 `;
 
 export const CalendarButtonWrapper = styled.span`

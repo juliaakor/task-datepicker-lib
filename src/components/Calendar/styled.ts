@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { FlexCenter } from '@styles/mixins';
 import { View } from '@type/index';
 
 export const Container = styled.div`
@@ -11,11 +12,8 @@ export const Container = styled.div`
 `;
 
 export const CalendarWrapper = styled.span`
-  display: flex;
+  ${FlexCenter}
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 
   ${({ theme }) => `
     width: ${theme.width.full};
@@ -33,10 +31,11 @@ export const CalendarItems = styled.div<{ $showWeekends: boolean; $viewType: Vie
     return $showWeekends ? 'repeat(7, 1fr)' : 'repeat(5, 1fr)';
   }};
 
-  ${({ $viewType }) => `
-    gap: ${$viewType === View.Year ? '10px' : '0px'};
+  ${({ $viewType, theme }) => `
+    gap: ${$viewType === View.Year ? `${theme.size.large}px` : `${theme.size.reset}px`};
+
     & > div {
-      padding: ${$viewType === View.Year ? '5px' : '0px'};
+      padding: ${$viewType === View.Year ? `${theme.size.medium}px` : `${theme.size.reset}px`};
     }
   `};
 

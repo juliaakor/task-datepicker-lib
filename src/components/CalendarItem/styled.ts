@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { NoUserSelect } from '@styles/mixins';
+
 export const CalendarItemWrapper = styled.div<{
   $disabled?: boolean;
   $selected?: boolean;
@@ -13,6 +15,7 @@ export const CalendarItemWrapper = styled.div<{
 }>`
   position: relative;
   align-content: center;
+  ${NoUserSelect}
 
   ${({ $hasHolidays, $isDisabled, $isHeaderItem, theme }) => `
     min-width: ${theme.width.calendarItem}px;

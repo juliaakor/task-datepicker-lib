@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
+import { IncludePointer } from '@styles/mixins';
+
 export const TaskTextContainer = styled.div`
   ${({ theme }) => `
     max-width: ${theme.width.tooltip}px;
   `}
 
   position: relative;
-  cursor: pointer;
+  ${IncludePointer}
 `;
 
 export const TaskTextContent = styled.span`
