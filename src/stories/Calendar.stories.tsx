@@ -1,30 +1,133 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 
-import { Calendar } from '@components/index';
-import { withCustomTheme } from '@decorators/index';
+import { CalendarWrapper } from '@components/CalendarWrapper';
+import { View } from '@type/index';
+
+import { defaultConfig, defaultCustomHolidays, defaultRange } from './defaults';
 
 const meta = {
-  args: {},
-  argTypes: {},
-  component: Calendar,
-  decorators: [
-    (Story) => {
-      const WrappedStory = withCustomTheme(Story);
-
-      return <WrappedStory />;
-    },
-  ],
+  component: CalendarWrapper,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   title: 'Datepicker/Calendar',
-} satisfies Meta<typeof Calendar>;
+} satisfies Meta<typeof CalendarWrapper>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const CalendarView: Story = {
-  args: {},
+export const Default: Story = {
+  args: {
+    config: defaultConfig,
+    ...defaultRange,
+    isOpen: false,
+    isWeekStartOnMonday: false,
+    label: 'Date',
+    showWeekends: true,
+  },
+};
+
+export const ViewWithCustomHolidays: Story = {
+  args: {
+    config: {
+      ...defaultConfig,
+      enableHolidays: true,
+    },
+    ...defaultRange,
+    ...defaultCustomHolidays,
+    isOpen: true,
+    isWeekStartOnMonday: false,
+    label: 'Date',
+    showWeekends: true,
+    supportedViews: [View.Month, View.Year, View.Week],
+  },
+};
+
+export const ViewWithoutDefaultHolidays: Story = {
+  args: {
+    config: {
+      ...defaultConfig,
+      enableHolidays: true,
+    },
+    ...defaultRange,
+    ...defaultCustomHolidays,
+    includeDefaultHolidays: false,
+    isOpen: true,
+    isWeekStartOnMonday: false,
+    label: 'Date',
+    showWeekends: true,
+    supportedViews: [View.Month, View.Year, View.Week],
+  },
+};
+
+export const ViewWithTasks: Story = {
+  args: {
+    config: {
+      ...defaultConfig,
+      enableTasks: true,
+    },
+    ...defaultRange,
+    isOpen: true,
+    isWeekStartOnMonday: false,
+    label: 'Date',
+    showWeekends: true,
+    supportedViews: [View.Month, View.Year, View.Week],
+  },
+};
+
+export const WithViewToggle: Story = {
+  args: {
+    config: {
+      ...defaultConfig,
+      enableViewToggle: true,
+    },
+    ...defaultRange,
+    isOpen: true,
+    label: 'Date',
+    supportedViews: [View.Month, View.Year, View.Week],
+  },
+};
+
+export const ViewWeekends: Story = {
+  args: {
+    config: {
+      ...defaultConfig,
+      enableWeekends: true,
+    },
+    ...defaultRange,
+    isOpen: true,
+    isWeekStartOnMonday: false,
+    label: 'Date',
+    showWeekends: true,
+  },
+};
+
+export const ViewWeekStartOnModay: Story = {
+  args: {
+    config: {
+      ...defaultConfig,
+      enableWeekends: true,
+    },
+    ...defaultRange,
+    isOpen: true,
+    isWeekStartOnMonday: true,
+    label: 'Date',
+    showWeekends: true,
+  },
+};
+
+export const ViewNoWeekends: Story = {
+  args: {
+    config: {
+      ...defaultConfig,
+      enableWeekends: true,
+    },
+    ...defaultRange,
+    isOpen: true,
+    isWeekStartOnMonday: false,
+    label: 'Date',
+    showWeekends: false,
+    supportedViews: [View.Month, View.Year, View.Week],
+  },
 };
