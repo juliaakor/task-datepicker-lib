@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from 'react';
 
 import { ClearIcon, DeleteIcon, EditIcon } from '@assets/index';
 import { TaskContent } from '@components/TaskContent';
-import { OutsideClickProvider, PortalProvider } from '@components/utilities';
+import { ErrorBoundary, OutsideClickProvider, PortalProvider } from '@components/utilities';
 import { Task } from '@type/index';
 
 import {
@@ -90,22 +90,24 @@ export const Modal = ({ onAddTask, onClose, onDeleteTask, onUpdateTask, show, ta
                 {editTaskId ? 'Update Task' : 'Add Task'}
               </AddButton>
             </div>
-            <TaskList>
-              {tasks.map((task) => (
-                <TaskItem key={task.id}>
-                  <Checkbox type="checkbox" checked={task.done} onChange={handleToggleDone(task)} />
-                  <TaskContent text={task.task} />
-                  <div>
-                    <EditButton onClick={handleEditTask(task)}>
-                      <EditIcon />
-                    </EditButton>
-                    <DeleteButton onClick={handleDeleteTask(task.id)}>
-                      <DeleteIcon />
-                    </DeleteButton>
-                  </div>
-                </TaskItem>
-              ))}
-            </TaskList>
+            <ErrorBoundary>
+              <TaskList>
+                {tasks.map((task) => (
+                  <TaskItem key={task.id}>
+                    <Checkbox type="checkbox" checked={task.done} onChange={handleToggleDone(task)} />
+                    <TaskContent text={task.task} />
+                    <div>
+                      <EditButton onClick={handleEditTask(task)}>
+                        <EditIcon />
+                      </EditButton>
+                      <DeleteButton onClick={handleDeleteTask(task.id)}>
+                        <DeleteIcon />
+                      </DeleteButton>
+                    </div>
+                  </TaskItem>
+                ))}
+              </TaskList>
+            </ErrorBoundary>
           </ModalContainer>
         </OutsideClickProvider>
       </ModalOverlay>
