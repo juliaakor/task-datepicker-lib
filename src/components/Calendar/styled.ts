@@ -3,11 +3,19 @@ import styled from 'styled-components';
 import { FlexCenter } from '@styles/mixins';
 import { View } from '@type/index';
 
+export const CalendarContainter = styled.div`
+  position: relative;
+`;
+
 export const Container = styled.div`
+  position: absolute;
+  z-index: 99;
+
   ${({ theme }) => `
     min-width: ${theme.width.minCalerndar}px;
     border: ${`${theme.size.smallX}px solid ${theme.colors.primaryBorder}`};
     border-radius: ${theme.size.medium3X}px;
+    background: ${theme.colors.bgPrimary};
   `}
 `;
 

@@ -7,7 +7,7 @@ const meta = {
   args: {},
   component: RangeCalendar,
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
   },
   tags: ['autodocs'],
   title: 'Datepicker/CalendarRange',

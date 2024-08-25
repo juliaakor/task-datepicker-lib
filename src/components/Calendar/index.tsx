@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import { CalendarItem as CalendarItemType } from '@components/CalendarItem/types';
 import { Modal, Input, Header, CalendarItem } from '@components/index';
-import { ErrorBoundary } from '@components/utilities';
+import { ErrorBoundary, OutsideClickProvider } from '@components/utilities';
 import {
   generateMonthView,
   generateWeekView,
@@ -14,7 +14,7 @@ import {
 } from '@lib/calendar';
 import { Task, View } from '@type/index';
 
-import { Button, CalendarWrapper, Container, CalendarItems } from './styled';
+import { Button, CalendarWrapper, Container, CalendarItems, CalendarContainter } from './styled';
 import { CalendarProps } from './types';
 
 export const Calendar = ({
@@ -169,63 +169,68 @@ export const Calendar = ({
         onDeleteTask={handleDeleteTask}
         onUpdateTask={handleUpdateTask}
       />
-      <Input
-        onFocus={handleCalendarInputFocus}
-        label={label}
-        name={label}
-        value={input}
-        onChange={handleInputChange}
-        toggleCalendar={handleCalendarToggle}
-      />
-      {isCalendarOpen && (
-        <Container>
-          <ErrorBoundary>
-            <CalendarWrapper>
-              <Header
-                title={headerTitle}
-                handleNextClick={handleHeaderControlsClick(true)}
-                handlePrevClick={handleHeaderControlsClick(false)}
-                handleDateTitleClick={handleViewChange}
-              />
-              <CalendarItems $showWeekends={showWeekends} $viewType={view || View.Month}>
-                {view !== View.Year && headerDays.map((day) => <CalendarItem key={day} value={day} isHeaderItem />)}
+      <CalendarContainter>
+        <Input
+          onFocus={handleCalendarInputFocus}
+          label={label}
+          name={label}
+          value={input}
+          onChange={handleInputChange}
+          toggleCalendar={handleCalendarToggle}
+        />
+        {isCalendarOpen && (
+          <OutsideClickProvider onOutsideClick={handleCalendarToggle}>
+            <Container>
+              <ErrorBoundary>
+                <CalendarWrapper>
+                  <Header
+                    title={headerTitle}
+                    handleNextClick={handleHeaderControlsClick(true)}
+                    handlePrevClick={handleHeaderControlsClick(false)}
+                    handleDateTitleClick={handleViewChange}
+                  />
+                  <CalendarItems $showWeekends={showWeekends} $viewType={view || View.Month}>
+                    {view !== View.Year && headerDays.map((day) => <CalendarItem key={day} value={day} isHeaderItem />)}
 
-                {days.map(({ date = currentDate, isDisabled, rangeEnd, rangeInBetween, rangeStart, value }) => {
-                  const holidaysForDate = holidays?.filter((holiday) =>
-                    DateTime.fromISO(holiday.startDate).hasSame(date, 'day')
-                  );
+                    {days.map(({ date = currentDate, isDisabled, rangeEnd, rangeInBetween, rangeStart, value }) => {
+                      const holidaysForDate = holidays?.filter((holiday) =>
+                        DateTime.fromISO(holiday.startDate).hasSame(date, 'day')
+                      );
 
-                  const rangeState = getRangeState(enableRange, date, startRange, endRange);
-                  const inBetweenRange = enableRange && startRange && endRange && date > startRange && date < endRange;
+                      const rangeState = getRangeState(enableRange, date, startRange, endRange);
+                      const inBetweenRange =
+                        enableRange && startRange && endRange && date > startRange && date < endRange;
 
-                  const isSelected =
-                    selectedDate && date.toFormat('yyyy-MM-dd') === selectedDate.toFormat('yyyy-MM-dd');
+                      const isSelected =
+                        selectedDate && date.toFormat('yyyy-MM-dd') === selectedDate.toFormat('yyyy-MM-dd');
 
-                  const hasTasks = Boolean(tasks?.[date?.toISODate() || '']?.length);
+                      const hasTasks = Boolean(tasks?.[date?.toISODate() || '']?.length);
 
-                  return (
-                    <CalendarItem
-                      onClick={handleItemClick}
-                      onDoubleClick={handleItemDoubleClick}
-                      date={date}
-                      key={date?.toISODate()}
-                      value={value}
-                      isDisabled={isDisabled}
-                      rangeStart={rangeState.rangeStart || rangeStart}
-                      rangeEnd={rangeState.rangeEnd || rangeEnd}
-                      selected={enableRange ? false : isSelected || false}
-                      rangeInBetween={inBetweenRange || rangeInBetween}
-                      hasTasks={hasTasks}
-                      holidays={holidaysForDate}
-                    />
-                  );
-                })}
-              </CalendarItems>
-            </CalendarWrapper>
-          </ErrorBoundary>
-          {!enableRange && <Button onClick={handleClearInput}>Clear</Button>}
-        </Container>
-      )}
+                      return (
+                        <CalendarItem
+                          onClick={handleItemClick}
+                          onDoubleClick={handleItemDoubleClick}
+                          date={date}
+                          key={date?.toISODate()}
+                          value={value}
+                          isDisabled={isDisabled}
+                          rangeStart={rangeState.rangeStart || rangeStart}
+                          rangeEnd={rangeState.rangeEnd || rangeEnd}
+                          selected={enableRange ? false : isSelected || false}
+                          rangeInBetween={inBetweenRange || rangeInBetween}
+                          hasTasks={hasTasks}
+                          holidays={holidaysForDate}
+                        />
+                      );
+                    })}
+                  </CalendarItems>
+                </CalendarWrapper>
+              </ErrorBoundary>
+              {!enableRange && <Button onClick={handleClearInput}>Clear</Button>}
+            </Container>
+          </OutsideClickProvider>
+        )}
+      </CalendarContainter>
     </>
   );
 };
