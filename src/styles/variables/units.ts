@@ -15,6 +15,7 @@ export const size = {
 };
 
 export const width = {
+  calendar: 230,
   calendarItem: 32,
   full: '100%',
   half: '50%',
