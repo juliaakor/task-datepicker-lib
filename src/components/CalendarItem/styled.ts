@@ -26,40 +26,43 @@ export const CalendarItemWrapper = styled.div<{
   `}
 
   background: ${({ $rangeEnd, $rangeInBetween, $rangeStart, $selected, theme }) => {
-    if ($selected) return theme.colors.bgDaySelected;
+    if ($rangeStart && $rangeEnd) return theme.colors.bgDaySelected;
     if ($rangeStart) return theme.colors.bgRangeStart;
     if ($rangeEnd) return theme.colors.bgRangeEnd;
     if ($rangeInBetween) return theme.colors.bgRangeInBetween;
+    if ($selected) return theme.colors.bgDaySelected;
 
     return 'transparent';
   }};
 
   color: ${({ $isDisabled, $rangeEnd, $rangeInBetween, $rangeStart, $selected, theme }) => {
     if ($isDisabled) return theme.colors.disabledDayText;
-    if ($selected || $rangeStart || $rangeEnd) return theme.colors.selectedDayText;
     if ($rangeInBetween) return theme.colors.rangeInBetweenText;
+    if ($selected || $rangeStart || $rangeEnd) return theme.colors.selectedDayText;
 
     return theme.colors.primaryText;
   }};
 
   border-radius: ${({ $rangeEnd, $rangeInBetween, $rangeStart, $selected, theme }) => {
-    if ($selected) return `${theme.size.medium3X}px`;
+    if ($rangeStart && $rangeEnd) return `${theme.size.medium3X}px`;
     if ($rangeStart)
       return `${theme.size.medium3X}px ${theme.size.reset}px ${theme.size.reset}px ${theme.size.medium3X}px`;
     if ($rangeEnd)
       return `${theme.size.reset}px ${theme.size.medium3X}px ${theme.size.medium3X}px ${theme.size.reset}px`;
     if ($rangeInBetween) return `${theme.size.reset}px`;
+    if ($selected) return `${theme.size.medium3X}px`;
 
     return `${theme.size.reset}px`;
   }};
 
   &:hover {
     background: ${({ $isDisabled, $isHeaderItem, $rangeEnd, $rangeInBetween, $rangeStart, $selected, theme }) => {
-      if ($selected) return theme.colors.bgDaySelected;
+      if ($rangeStart && $rangeEnd) return theme.colors.bgDaySelected;
       if ($rangeStart) return theme.colors.bgRangeStart;
       if ($rangeEnd) return theme.colors.bgRangeEnd;
       if ($rangeInBetween) return theme.colors.bgRangeInBetween;
       if ($isHeaderItem || $isDisabled) return theme.colors.transparent;
+      if ($selected) return theme.colors.bgDaySelected;
 
       return theme.colors.bgButtonOnHover;
     }};
