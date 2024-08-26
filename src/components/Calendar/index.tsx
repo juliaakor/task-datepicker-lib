@@ -5,6 +5,7 @@ import { CalendarItem as CalendarItemType } from '@components/CalendarItem/types
 import { Modal, Input, Header, CalendarItem } from '@components/index';
 import { ErrorBoundary, OutsideClickProvider } from '@components/utilities';
 import { MONTH_OFFSET, WEEK_OFFSET, YEARS_OFFSET } from '@constants/calendar';
+import { useCalendarModal } from '@hooks/useCalendarModal';
 import { useTasks } from '@hooks/useTasks';
 import {
   generateMonthView,
@@ -37,6 +38,8 @@ export const Calendar = ({
   tasks,
   view = View.Month,
 }: CalendarProps) => {
+  const { handleCalendarInputFocus, handleCalendarToggle, isCalendarOpen } = useCalendarModal(isOpen);
+
   const {
     handleAddTask,
     handleCloseModal,
@@ -47,7 +50,6 @@ export const Calendar = ({
     taskDate,
   } = useTasks(taskManager);
 
-  const [isCalendarOpen, setIsCalendarOpen] = useState(isOpen);
   const [currentDate, setCurrentDate] = useState<DateTime>(getCurrentDate());
   const [days, setDays] = useState<CalendarItemType[]>([]);
   const [selectedDate, setSelectedDate] = useState<DateTime | null>(null);
@@ -73,14 +75,6 @@ export const Calendar = ({
 
   const handleViewChange = () => {
     setView?.();
-  };
-
-  const handleCalendarToggle = () => {
-    setIsCalendarOpen((prev) => !prev);
-  };
-
-  const handleCalendarInputFocus = () => {
-    setIsCalendarOpen(true);
   };
 
   const updateDate = (unit: View, amount: number) => {
