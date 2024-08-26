@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { IncludePointer, IconButton } from '@styles/mixins';
+import { InputItemProps } from '@type/index';
 
 export const InputWrapper = styled.div`
   position: relative;
@@ -17,7 +18,7 @@ export const Label = styled.div`
   `}
 `;
 
-export const InputItem = styled.input<{ $isError: boolean }>`
+export const InputItem = styled.input<InputItemProps>`
   ${({ $isError, theme }) => `
     min-width: ${theme.width.minCalerndar}px;
     border: ${`${theme.size.smallX}px solid ${theme.colors.primaryBorder}`};

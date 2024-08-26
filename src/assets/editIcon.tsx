@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { DEFAULT_ICON } from '@constants/assets';
+
 import { IconProps } from './types';
 
-export const EditIcon = ({ color = '#AAAAAA', size = 16 }: IconProps) => {
+export const EditIcon = ({ color = DEFAULT_ICON.iconLightGray, size = DEFAULT_ICON.size }: IconProps) => {
   return (
     <svg
       version="1.0"

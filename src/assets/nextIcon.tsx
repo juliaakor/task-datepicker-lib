@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { DEFAULT_ICON } from '@constants/assets';
+
 import { IconProps } from './types';
 
-export const NextIcon = ({ color = 'black', size = 16 }: IconProps) => {
+export const NextIcon = ({ color = DEFAULT_ICON.iconBlack, size = DEFAULT_ICON.size }: IconProps) => {
   return (
     <svg
       width={size}

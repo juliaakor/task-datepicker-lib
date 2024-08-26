@@ -72,7 +72,7 @@ export const Modal = ({ date, onAddTask, onClose, onDeleteTask, onUpdateTask, sh
 
   return (
     <PortalProvider>
-      <ModalOverlay $show={show}>
+      <ModalOverlay $visible={show}>
         <OutsideClickProvider onOutsideClick={onClose}>
           <ModalContainer>
             <ModalHeader>
