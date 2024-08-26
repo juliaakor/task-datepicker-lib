@@ -1,4 +1,5 @@
 import { CalendarItem } from '@components/CalendarItem';
+import { CalendarItemsList } from '@components/CalendarItemsList';
 import { Header } from '@components/Header';
 import * as index from '@components/index';
 import { Input } from '@components/Input';
@@ -24,5 +25,9 @@ describe('components folder index file exports', () => {
 
   it('should export TaskContent from index', () => {
     expect(index.TaskContent).toBe(TaskContent);
+  });
+
+  it('should export CalendarItemsList from index', () => {
+    expect(index.CalendarItemsList).toBe(CalendarItemsList);
   });
 });
