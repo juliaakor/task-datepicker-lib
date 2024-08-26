@@ -1,23 +1,16 @@
 import { DateTime } from 'luxon';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { CalendarItem as CalendarItemType } from '@components/CalendarItem/types';
-import { Modal, Input, Header, CalendarItem } from '@components/index';
+import { Modal, Input, Header, CalendarItemsList } from '@components/index';
 import { ErrorBoundary, OutsideClickProvider } from '@components/utilities';
 import { MONTH_OFFSET, WEEK_OFFSET, YEARS_OFFSET } from '@constants/calendar';
 import { useCalendarModal } from '@hooks/useCalendarModal';
 import { useTasks } from '@hooks/useTasks';
-import {
-  generateMonthView,
-  generateWeekView,
-  generateYearView,
-  getCurrentDate,
-  getHeaders,
-  getRangeState,
-} from '@lib/calendar';
+import { getCurrentDate, getHeaders } from '@lib/calendar';
 import { View } from '@type/index';
 
-import { Button, CalendarWrapper, Container, CalendarItems, CalendarContainter } from './styled';
+import { Button, CalendarWrapper, Container, CalendarContainter } from './styled';
 import { CalendarProps } from './types';
 
 export const Calendar = ({
@@ -51,27 +44,10 @@ export const Calendar = ({
   } = useTasks(taskManager);
 
   const [currentDate, setCurrentDate] = useState<DateTime>(getCurrentDate());
-  const [days, setDays] = useState<CalendarItemType[]>([]);
   const [selectedDate, setSelectedDate] = useState<DateTime | null>(null);
   const [input, setInput] = useState(inputValue || '');
 
   const { headerDays, headerTitle } = getHeaders(currentDate, view, isWeekStartOnMonday, showWeekends);
-
-  useEffect(() => {
-    if (view === View.Month) {
-      setDays(
-        generateMonthView(currentDate.year, currentDate.month, minDate, maxDate, isWeekStartOnMonday, showWeekends)
-      );
-    }
-
-    if (view === View.Week) {
-      setDays(generateWeekView(currentDate, minDate, maxDate, isWeekStartOnMonday, showWeekends));
-    }
-
-    if (view === View.Year) {
-      setDays(generateYearView(currentDate.year, minDate, maxDate));
-    }
-  }, [currentDate, isWeekStartOnMonday, maxDate, minDate, showWeekends, view]);
 
   const handleViewChange = () => {
     setView?.();
@@ -158,41 +134,20 @@ export const Calendar = ({
                     handlePrevClick={handleHeaderControlsClick(false)}
                     handleDateTitleClick={handleViewChange}
                   />
-                  <CalendarItems $showWeekends={showWeekends} $viewType={view || View.Month}>
-                    {view !== View.Year && headerDays.map((day) => <CalendarItem key={day} value={day} isHeaderItem />)}
-
-                    {days.map(({ date = currentDate, isDisabled, rangeEnd, rangeInBetween, rangeStart, value }) => {
-                      const holidaysForDate = holidays?.filter((holiday) =>
-                        DateTime.fromISO(holiday.startDate).hasSame(date, 'day')
-                      );
-
-                      const rangeState = getRangeState(enableRange, date, startRange, endRange);
-                      const inBetweenRange =
-                        enableRange && startRange && endRange && date > startRange && date < endRange;
-
-                      const isSelected =
-                        selectedDate && date.toFormat('yyyy-MM-dd') === selectedDate.toFormat('yyyy-MM-dd');
-
-                      const hasTasks = Boolean(tasks?.[date?.toISODate() || '']?.length);
-
-                      return (
-                        <CalendarItem
-                          onClick={handleItemClick}
-                          onDoubleClick={handleItemDoubleClick}
-                          date={date}
-                          key={date?.toISODate()}
-                          value={value}
-                          isDisabled={isDisabled}
-                          rangeStart={rangeState.rangeStart || rangeStart}
-                          rangeEnd={rangeState.rangeEnd || rangeEnd}
-                          selected={enableRange ? false : isSelected || false}
-                          rangeInBetween={inBetweenRange || rangeInBetween}
-                          hasTasks={hasTasks}
-                          holidays={holidaysForDate}
-                        />
-                      );
-                    })}
-                  </CalendarItems>
+                  <CalendarItemsList
+                    enableRange={enableRange}
+                    startRange={startRange}
+                    endRange={endRange}
+                    holidays={holidays}
+                    showWeekends={showWeekends}
+                    currentDate={currentDate}
+                    headerDays={headerDays}
+                    selectedDate={selectedDate}
+                    view={view}
+                    handleItemDoubleClick={handleItemDoubleClick}
+                    handleItemClick={handleItemClick}
+                    isWeekStartOnMonday={isWeekStartOnMonday}
+                  />
                 </CalendarWrapper>
               </ErrorBoundary>
               {!enableRange && <Button onClick={handleClearInput}>Clear</Button>}
