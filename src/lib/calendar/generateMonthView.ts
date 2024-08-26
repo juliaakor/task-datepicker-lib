@@ -1,6 +1,8 @@
 import { DateTime } from 'luxon';
 
-import { DEFAULT_ITEM } from '@constants/calendar';
+import { DAYS_IN_WEEK, MAX_CALENDAR_DAYS, MAX_CALENDAR_DAYS_WITHOUT_WEEKENDS } from '@constants/calendar';
+
+import { generateDayObject } from './helpers/generateDayObject';
 
 export const generateMonthView = (
   year: number,
@@ -13,66 +15,32 @@ export const generateMonthView = (
   const startOfMonth = DateTime.local(year, month, 1);
   const endOfMonth = startOfMonth.endOf('month');
 
-  let startWeekday = startOfMonth.weekday;
-  let endWeekday = endOfMonth.weekday;
-
-  if (startOnMonday) {
-    startWeekday -= 1;
-    endWeekday -= 1;
-  } else {
-    startWeekday %= 7;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    endWeekday %= 7;
-  }
-
+  const startWeekday = (startOfMonth.weekday % DAYS_IN_WEEK) - (startOnMonday ? 1 : 0);
   const daysInMonth = endOfMonth.day;
   const daysArray = [];
 
-  const previousMonthEnd = startOfMonth.minus({ days: startWeekday });
-  const nextMonthStart = endOfMonth.plus({ days: 1 });
+  const totalDays = showWeekends ? MAX_CALENDAR_DAYS : MAX_CALENDAR_DAYS_WITHOUT_WEEKENDS;
 
-  const totalDays = showWeekends ? 35 : 25;
-
-  for (let i = 0; i < startWeekday; i += 1) {
-    const day = previousMonthEnd.plus({ days: i });
+  for (let i = startWeekday; i > 0; i -= 1) {
+    const day = startOfMonth.minus({ days: i });
     if (showWeekends || (day.weekday !== 6 && day.weekday !== 7)) {
-      daysArray.push({
-        ...DEFAULT_ITEM,
-        date: day,
-        isDisabled: true,
-        key: day.toISODate(),
-        value: day.day,
-      });
+      daysArray.push(generateDayObject(day, true));
     }
   }
 
   for (let i = 1; i <= daysInMonth; i += 1) {
     const day = startOfMonth.plus({ days: i - 1 });
-    const isDisabled = (minDate && day < minDate) || (maxDate && day > maxDate) || false;
+    const isDisabled = (minDate && day < minDate) || (maxDate && day > maxDate);
     if (showWeekends || (day.weekday !== 6 && day.weekday !== 7)) {
-      daysArray.push({
-        ...DEFAULT_ITEM,
-        date: day,
-        isDisabled,
-        key: day.toISODate(),
-        value: day.day,
-      });
+      daysArray.push(generateDayObject(day, isDisabled || false));
     }
   }
 
-  let i = 1;
-  while (daysArray.length < totalDays) {
-    const day = nextMonthStart.plus({ days: i - 1 });
+  for (let i = 1; daysArray.length < totalDays; i += 1) {
+    const day = endOfMonth.plus({ days: i });
     if (showWeekends || (day.weekday !== 6 && day.weekday !== 7)) {
-      daysArray.push({
-        ...DEFAULT_ITEM,
-        date: day,
-        isDisabled: true,
-        key: day.toISODate(),
-        value: day.day,
-      });
+      daysArray.push(generateDayObject(day, true));
     }
-    i += 1;
   }
 
   return daysArray;
