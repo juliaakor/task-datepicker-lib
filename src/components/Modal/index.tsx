@@ -18,12 +18,13 @@ import {
   EditButton,
   TextAreaField,
   InputContainer,
+  Date,
 } from './styled';
 import { ModalProps } from './types';
 
 const TEXT_AREA_FIELD_ROWS = 3;
 
-export const Modal = ({ onAddTask, onClose, onDeleteTask, onUpdateTask, show, tasks }: ModalProps) => {
+export const Modal = ({ date, onAddTask, onClose, onDeleteTask, onUpdateTask, show, tasks }: ModalProps) => {
   const [newTask, setNewTask] = useState('');
   const [editTaskId, setEditTaskId] = useState<string | null>(null);
   const [editTaskName, setEditTaskName] = useState<string>('');
@@ -76,6 +77,7 @@ export const Modal = ({ onAddTask, onClose, onDeleteTask, onUpdateTask, show, ta
           <ModalContainer>
             <ModalHeader>
               <h2>Tasks</h2>
+              <Date>{date}</Date>
               <CloseButton onClick={onClose}>
                 <ClearIcon />
               </CloseButton>

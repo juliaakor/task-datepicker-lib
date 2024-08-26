@@ -41,6 +41,13 @@ export const ModalHeader = styled.div`
   `}
 `;
 
+export const Date = styled.p`
+  ${({ theme }) => `
+    font-size: ${theme.fontSize.medium}px;
+    line-height: ${theme.lineHeight.medium}px;
+  `}
+`;
+
 export const InputContainer = styled.div`
   display: flex;
 `;
