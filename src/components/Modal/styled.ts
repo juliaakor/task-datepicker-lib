@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
 import { FlexCenterSpaceBetween, IncludePointer, SvgIconOnHover } from '@styles/mixins';
+import { PopUpProps } from '@type/index';
 
-export const ModalOverlay = styled.div<{ $show: boolean }>`
+export const ModalOverlay = styled.div<PopUpProps>`
   position: fixed;
   align-items: center;
   justify-content: center;
   z-index: 98;
 
-  ${({ $show, theme }) => `
-  display: ${$show ? 'flex' : 'none'};
+  ${({ $visible, theme }) => `
+  display: ${$visible ? 'flex' : 'none'};
   top: ${theme.size.reset};
   left: ${theme.size.reset};
   width: ${theme.width.full};

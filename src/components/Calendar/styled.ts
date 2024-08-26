@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { FlexCenter } from '@styles/mixins';
-import { View } from '@type/index';
+import { CalendarItemsProps, View } from '@type/index';
 
 export const CalendarContainter = styled.div`
   position: relative;
@@ -29,7 +29,7 @@ export const CalendarWrapper = styled.span`
   `}
 `;
 
-export const CalendarItems = styled.div<{ $showWeekends: boolean; $viewType: View }>`
+export const CalendarItems = styled.div<CalendarItemsProps>`
   display: grid;
   grid-template-columns: ${({ $showWeekends, $viewType }) => {
     if ($viewType === View.Year) {

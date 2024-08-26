@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { DEFAULT_ICON } from '@constants/assets';
+
 import { IconProps } from './types';
 
-export const DeleteIcon = ({ color = '#AAAAAA', size = 16 }: IconProps) => {
+export const DeleteIcon = ({ color = DEFAULT_ICON.iconLightGray, size = DEFAULT_ICON.size }: IconProps) => {
   return (
     <svg
       version="1.0"

@@ -1,18 +1,9 @@
 import styled from 'styled-components';
 
 import { NoUserSelect } from '@styles/mixins';
+import { CalendarItemWrapperProps, PopUpProps } from '@type/index';
 
-export const CalendarItemWrapper = styled.div<{
-  $disabled?: boolean;
-  $selected?: boolean;
-  $rangeStart?: boolean;
-  $rangeEnd?: boolean;
-  $rangeInBetween?: boolean;
-  $isDisabled?: boolean;
-  $isHeaderItem?: boolean;
-  $hasTasks?: boolean;
-  $hasHolidays?: boolean;
-}>`
+export const CalendarItemWrapper = styled.div<CalendarItemWrapperProps>`
   position: relative;
   align-content: center;
   ${NoUserSelect}
@@ -89,7 +80,7 @@ export const CalendarItemWrapper = styled.div<{
   `}
 `;
 
-export const Tooltip = styled.div<{ $visible: boolean }>`
+export const Tooltip = styled.div<PopUpProps>`
   ${({ $visible, theme }) => `
     position: absolute;
     text-align: center;

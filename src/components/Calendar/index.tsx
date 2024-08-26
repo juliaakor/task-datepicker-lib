@@ -36,7 +36,7 @@ export const Calendar = ({
   taskManager,
   tasks,
   view = View.Month,
-}: CalendarProps & { minDate?: DateTime; maxDate?: DateTime }) => {
+}: CalendarProps) => {
   const {
     handleAddTask,
     handleCloseModal,
