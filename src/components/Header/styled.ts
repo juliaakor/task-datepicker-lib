@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { FlexCenterSpaceBetween, IncludePointer, NoUserSelect } from '@styles/mixins';
+
 export const HeaderContainer = styled.div`
   ${({ theme }) => `
     min-width: ${theme.width.full};
@@ -8,17 +10,16 @@ export const HeaderContainer = styled.div`
     font-weight: ${theme.fontWeight.bold};
   `}
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  ${NoUserSelect}
+  ${FlexCenterSpaceBetween}
 `;
 
 export const DateTitle = styled.span`
-  cursor: pointer;
+  ${IncludePointer}
 `;
 
 export const IconButton = styled.span`
-  cursor: pointer;
+  ${IncludePointer}
 
   & svg:hover path {
     fill: ${({ theme }) => theme.colors.iconDarkColorHover};

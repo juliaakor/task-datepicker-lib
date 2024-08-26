@@ -1,5 +1,179 @@
 # task-datepicker-lib
 
+## Installation
+
+### Prerequisites
+
+Ensure you have the following dependencies installed in your project:
+
+- React 18.0.0 or higher
+- React DOM 18.0.0 or higher
+- Styled Components 6.0.0 or higher
+
+### Installation Command
+
+To install the `task-datepicker-lib` package, run the following command:
+
+```bash
+yarn add task-datepicker-lib
+```
+
+### Peer Dependencies
+
+Ensure that you have the following peer dependencies in your project:
+
+```json
+{
+  "react": "^18.0.0",
+  "react-dom": "^18.0.0",
+  "styled-components": "^6.0.0"
+}
+```
+
+## Usage
+
+### Basic Calendar
+
+To use the basic calendar component, import the CalendarWrapper from the library and include it in your component:
+
+```js
+import React from 'react';
+import { Calendar } from 'task-datepicker-lib';
+
+export const defaultConfig = {
+  enableHolidays: false,
+  enableTasks: false,
+  enableViewToggle: false,
+  enableWeekends: false,
+};
+
+export const defaultRange = {
+  maxDate: {DateTime object},
+  minDate: {DateTime object},
+};
+
+export const MyCalendarComponent = () => (
+  <Calendar
+    config={defaultConfig}
+    {...defaultRange}
+    isOpen={false}
+    isWeekStartOnMonday={false}
+    label="Date"
+    showWeekends={true}
+  />
+);
+```
+
+or
+
+```js
+import React from 'react';
+import { Calendar } from 'task-datepicker-lib';
+
+export const defaultConfig = {
+  enableHolidays: false,
+  enableTasks: false,
+  enableViewToggle: false,
+  enableWeekends: false,
+};
+
+export const defaultRange = {
+  maxDate: {DateTime object},
+  minDate: {DateTime object},
+};
+
+export const defaultCustomHolidays = {
+  customHolidays: [
+    {
+      endDate: '2024-08-22',
+      id: '12345',
+      name: 'Random Holiday',
+      startDate: '2024-08-22',
+    },
+    {
+      endDate: '2024-08-22',
+      id: '1234',
+      name: 'Random Holiday 2',
+      startDate: '2024-08-22',
+    },
+  ],
+};
+
+export  const CustomHolidayExample = () => (
+  <Calendar
+    config={{
+      ...defaultConfig,
+      enableHolidays: true,
+    }}
+    {...defaultRange}
+    {...defaultCustomHolidays}
+    isOpen={true}
+    isWeekStartOnMonday={false}
+    label="Date"
+    showWeekends={true}
+    supportedViews={[View.Month, View.Year, View.Week]}
+  />
+);
+```
+
+### Range Calendar
+
+For selecting a range of dates, use the RangeCalendar component:
+
+```js
+import React from 'react';
+import { RangeCalendar } from 'task-datepicker-lib';
+
+export const MyRangeCalendarComponent = () => (
+  <RangeCalendar
+    isOpen={true}
+    minDate={DateTime.local(2024, 1, 1)}
+    maxDate={DateTime.local(2024, 12, 31)}
+    isWeekStartOnMonday={false}
+    label="RangeDate"
+    showWeekends={true}
+  />
+);
+```
+
+## Component Overview
+
+### Props
+
+- config: An object to configure the calendar's behavior.
+- enableHolidays: Boolean to enable/disable holidays.
+- enableTasks: Boolean to enable/disable tasks.
+- enableViewToggle: Boolean to enable/disable view toggle functionality.
+- enableWeekends: Boolean to include/exclude weekends.
+- isOpen: Boolean to control whether the calendar is open or closed.
+- isWeekStartOnMonday: Boolean to control if the week starts on Monday.
+- label: A string for the calendar's label.
+- showWeekends: Boolean to show or hide weekends.
+- supportedViews: Array of views that are supported (e.g., View.Month, View.Year, View.Week).
+
+### Config
+
+Pass the following config to turn on or off the features of the calendar:
+
+```json
+const config = {
+  enableHolidays: true,
+  enableTasks: true,
+  enableViewToggle: true,
+  enableWeekends: false,
+};
+```
+
+## Types
+
+The package exports the following types:
+
+- Holiday: Type representing a holiday.
+- Task: Type representing a task.
+- View: Enum representing different calendar views (Month, Year, Week).
+- Colors: Type representing color configurations.
+- Theme: Type representing theme configurations.
+
 ## For contributors
 
 ### Getting Started

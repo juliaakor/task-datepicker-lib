@@ -4,6 +4,7 @@ export const colors = {
   bgDayOnHover: 'rgba(241, 241, 241, 1)',
   bgDaySelected: 'rgba(47, 128, 237, 1)',
   bgModal: 'rgb(247, 245, 245)',
+  bgPrimary: 'rgb(255, 255, 255)',
   bgRangeEnd: 'rgba(47, 128, 237, 1)',
   bgRangeInBetween: 'rgba(47, 128, 237, 0.1)',
   bgRangeStart: 'rgba(47, 128, 237, 0.6)',

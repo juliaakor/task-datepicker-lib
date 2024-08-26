@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from 'react';
 
 import { ClearIcon, DeleteIcon, EditIcon } from '@assets/index';
 import { TaskContent } from '@components/TaskContent';
-import { OutsideClickProvider, PortalProvider } from '@components/utilities';
+import { ErrorBoundary, OutsideClickProvider, PortalProvider } from '@components/utilities';
 import { Task } from '@type/index';
 
 import {
@@ -17,12 +17,14 @@ import {
   Checkbox,
   EditButton,
   TextAreaField,
+  InputContainer,
+  Date,
 } from './styled';
 import { ModalProps } from './types';
 
 const TEXT_AREA_FIELD_ROWS = 3;
 
-export const Modal = ({ onAddTask, onClose, onDeleteTask, onUpdateTask, show, tasks }: ModalProps) => {
+export const Modal = ({ date, onAddTask, onClose, onDeleteTask, onUpdateTask, show, tasks }: ModalProps) => {
   const [newTask, setNewTask] = useState('');
   const [editTaskId, setEditTaskId] = useState<string | null>(null);
   const [editTaskName, setEditTaskName] = useState<string>('');
@@ -75,11 +77,12 @@ export const Modal = ({ onAddTask, onClose, onDeleteTask, onUpdateTask, show, ta
           <ModalContainer>
             <ModalHeader>
               <h2>Tasks</h2>
+              <Date>{date}</Date>
               <CloseButton onClick={onClose}>
                 <ClearIcon />
               </CloseButton>
             </ModalHeader>
-            <div>
+            <InputContainer>
               <TextAreaField
                 value={editTaskId ? editTaskName : newTask}
                 onChange={editTaskId ? handleEditTextFieldChange : handleTextFieldChange}
@@ -87,25 +90,27 @@ export const Modal = ({ onAddTask, onClose, onDeleteTask, onUpdateTask, show, ta
                 rows={TEXT_AREA_FIELD_ROWS}
               />
               <AddButton onClick={editTaskId ? handleUpdateTask : handleAddTask}>
-                {editTaskId ? 'Update Task' : 'Add Task'}
+                {editTaskId ? 'Update' : 'Add'}
               </AddButton>
-            </div>
-            <TaskList>
-              {tasks.map((task) => (
-                <TaskItem key={task.id}>
-                  <Checkbox type="checkbox" checked={task.done} onChange={handleToggleDone(task)} />
-                  <TaskContent text={task.task} />
-                  <div>
-                    <EditButton onClick={handleEditTask(task)}>
-                      <EditIcon />
-                    </EditButton>
-                    <DeleteButton onClick={handleDeleteTask(task.id)}>
-                      <DeleteIcon />
-                    </DeleteButton>
-                  </div>
-                </TaskItem>
-              ))}
-            </TaskList>
+            </InputContainer>
+            <ErrorBoundary>
+              <TaskList>
+                {tasks.map((task) => (
+                  <TaskItem key={task.id}>
+                    <Checkbox type="checkbox" checked={task.done} onChange={handleToggleDone(task)} />
+                    <TaskContent text={task.task} />
+                    <div>
+                      <EditButton onClick={handleEditTask(task)}>
+                        <EditIcon />
+                      </EditButton>
+                      <DeleteButton onClick={handleDeleteTask(task.id)}>
+                        <DeleteIcon />
+                      </DeleteButton>
+                    </div>
+                  </TaskItem>
+                ))}
+              </TaskList>
+            </ErrorBoundary>
           </ModalContainer>
         </OutsideClickProvider>
       </ModalOverlay>

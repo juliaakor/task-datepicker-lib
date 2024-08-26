@@ -1,5 +1,5 @@
-import * as index from '@lib/utils/format';
-import { formatDateInput } from '@lib/utils/format/formatDateInput';
+import * as index from '@lib/format';
+import { formatDateInput } from '@lib/format/formatDateInput';
 
 describe('lib format folder index file exports', () => {
   it('should export formatDateInput from index', () => {

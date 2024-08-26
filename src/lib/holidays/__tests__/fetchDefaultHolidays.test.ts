@@ -1,4 +1,4 @@
-import { fetchDefaultHolidays } from '@lib/utils/holidays/fetchDefaultHolidays';
+import { fetchDefaultHolidays } from '@lib/holidays/fetchDefaultHolidays';
 
 global.fetch = jest.fn();
 

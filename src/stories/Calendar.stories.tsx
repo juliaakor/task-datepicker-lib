@@ -8,7 +8,7 @@ import { defaultConfig, defaultCustomHolidays, defaultRange } from './defaults';
 const meta = {
   component: CalendarWrapper,
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
   },
   tags: ['autodocs'],
   title: 'Datepicker/Calendar',

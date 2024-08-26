@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { NoUserSelect } from '@styles/mixins';
+
 export const CalendarItemWrapper = styled.div<{
   $disabled?: boolean;
   $selected?: boolean;
@@ -13,6 +15,7 @@ export const CalendarItemWrapper = styled.div<{
 }>`
   position: relative;
   align-content: center;
+  ${NoUserSelect}
 
   ${({ $hasHolidays, $isDisabled, $isHeaderItem, theme }) => `
     min-width: ${theme.width.calendarItem}px;
@@ -22,7 +25,7 @@ export const CalendarItemWrapper = styled.div<{
     font-weight: ${$isHeaderItem ? theme.fontWeight.bold : theme.fontWeight.semiBold};
     line-height: ${theme.lineHeight.medium}px;
     cursor: ${$isDisabled || $isHeaderItem ? 'default' : 'pointer'};
-    border: ${theme.size.reset}px solid ${$hasHolidays ? theme.colors.bgDaySelected : theme.colors.transparent};
+    border: ${theme.size.small2X}px solid ${$hasHolidays ? theme.colors.bgDaySelected : theme.colors.transparent};
   `}
 
   background: ${({ $rangeEnd, $rangeInBetween, $rangeStart, $selected, theme }) => {
@@ -43,7 +46,7 @@ export const CalendarItemWrapper = styled.div<{
     return theme.colors.primaryText;
   }};
 
-  border-radius: ${({ $rangeEnd, $rangeInBetween, $rangeStart, $selected, theme }) => {
+  border-radius: ${({ $hasHolidays, $rangeEnd, $rangeInBetween, $rangeStart, $selected, theme }) => {
     if ($rangeStart && $rangeEnd) return `${theme.size.medium3X}px`;
     if ($rangeStart)
       return `${theme.size.medium3X}px ${theme.size.reset}px ${theme.size.reset}px ${theme.size.medium3X}px`;
@@ -51,6 +54,7 @@ export const CalendarItemWrapper = styled.div<{
       return `${theme.size.reset}px ${theme.size.medium3X}px ${theme.size.medium3X}px ${theme.size.reset}px`;
     if ($rangeInBetween) return `${theme.size.reset}px`;
     if ($selected) return `${theme.size.medium3X}px`;
+    if ($hasHolidays) return theme.width.half;
 
     return `${theme.size.reset}px`;
   }};
@@ -74,7 +78,7 @@ export const CalendarItemWrapper = styled.div<{
     &::after {
       content: '';
       position: absolute;
-      bottom: ${theme.size.reset}px;
+      bottom: ${theme.size.smallX}px;
       left: ${theme.width.half};
       transform: translateX(-${theme.width.half});
       width:  ${theme.size.medium}px;

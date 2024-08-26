@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { FlexCenterSpaceBetween, IncludePointer, SvgIconOnHover } from '@styles/mixins';
+
 export const ModalOverlay = styled.div<{ $show: boolean }>`
   position: fixed;
   align-items: center;
@@ -31,25 +33,23 @@ export const ModalContainer = styled.div`
 `;
 
 export const ModalHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  ${FlexCenterSpaceBetween}
 
   ${({ theme }) => `
-  border-bottom: ${theme.size.smallX}px solid ${theme.colors.dividerBorder};
   padding-bottom: ${theme.size.smallX}px;
   margin-bottom: ${theme.size.mediumX}px;
   `}
 `;
 
-export const InputField = styled.input`
+export const Date = styled.p`
   ${({ theme }) => `
-    padding: ${theme.size.mediumX}px;
-    margin-bottom: ${theme.size.large}px;
-    border: ${theme.size.smallX}px solid ${theme.colors.dividerBorder};
-    border-radius: ${theme.size.mediumX}px;
-    width: ${theme.width.full};
+    font-size: ${theme.fontSize.medium}px;
+    line-height: ${theme.lineHeight.medium}px;
   `}
+`;
+
+export const InputContainer = styled.div`
+  display: flex;
 `;
 
 export const AddButton = styled.button`
@@ -57,7 +57,6 @@ export const AddButton = styled.button`
     padding: ${theme.size.mediumX}px ${theme.size.largeX}px;
     background-color: ${theme.colors.bgButtonColor};
     color: ${theme.colors.selectedDayText};
-    border-radius: ${theme.size.mediumX}px;
 
     &:hover {
       box-shadow: ${theme.size.reset} ${theme.size.small}px ${theme.size.mediumX}px ${theme.colors.itemShadow};
@@ -65,35 +64,30 @@ export const AddButton = styled.button`
   `}
 
   border: none;
-  cursor: pointer;
 `;
 
 export const DeleteButton = styled.button`
   ${({ theme }) => `
     padding: ${theme.size.mediumX}px ${theme.size.largeX}px;
 
-    & svg:hover path {
-      fill: ${theme.colors.iconLightColorHover};
-    }
+    ${SvgIconOnHover}
   `}
 
   background: none;
   border: none;
-  cursor: pointer;
+  ${IncludePointer}
 `;
 
 export const CloseButton = styled.button`
   ${({ theme }) => `
     padding: ${theme.size.mediumX}px ${theme.size.largeX}px;
 
-    & svg:hover path {
-      fill: ${theme.colors.iconLightColorHover};
-    }
+    ${SvgIconOnHover}
   `}
 
   background: none;
   border: none;
-  cursor: pointer;
+  ${IncludePointer}
 `;
 
 export const Checkbox = styled.input`
@@ -108,13 +102,11 @@ export const EditButton = styled.button`
     padding: ${theme.size.mediumX}px ${theme.size.largeX}px;
     margin-right: ${theme.size.smallX}px;
 
-    & svg:hover path {
-      fill: ${theme.colors.iconLightColorHover};
-    }
+    ${SvgIconOnHover}
   `}
 
   border: none;
-  cursor: pointer;
+  ${IncludePointer}
 `;
 
 export const TextAreaField = styled.textarea`
@@ -133,9 +125,7 @@ export const TaskItem = styled.li`
     padding: ${theme.size.small}px ${theme.size.reset};
   `}
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  ${FlexCenterSpaceBetween}
 `;
 
 export const TaskList = styled.ul`

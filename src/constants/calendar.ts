@@ -8,13 +8,14 @@ export const MAX_CALENDAR_DAYS_WITH_NEXT_MONTH = 42;
 
 export const MAX_CALENDAR_DAYS_WITHOUT_WEEKENDS = 25;
 
-export const WEEK_DAYS = 7;
+export const DAYS_IN_WEEK = 7;
+export const WEEKEND_DAYS = [6, 7];
 
-export const YEARS_INCREMENT = 5;
+export const YEARS_OFFSET = 5;
 
-export const MONTH_INCREMENT = 1;
+export const MONTH_OFFSET = 1;
 
-export const WEEK_INCREMENT = 1;
+export const WEEK_OFFSET = 1;
 
 export const DEFAULT_ITEM = {
   isHeaderItem: false,

@@ -1,7 +1,7 @@
-import * as index from '@lib/utils/holidays';
-import { fetchDefaultHolidays } from '@lib/utils/holidays/fetchDefaultHolidays';
-import { formatResToHolidays } from '@lib/utils/holidays/formatResToHolidays';
-import { mergeHolidays } from '@lib/utils/holidays/mergeHolidays';
+import * as index from '@lib/holidays';
+import { fetchDefaultHolidays } from '@lib/holidays/fetchDefaultHolidays';
+import { formatResToHolidays } from '@lib/holidays/formatResToHolidays';
+import { mergeHolidays } from '@lib/holidays/mergeHolidays';
 
 describe('lib utils holdays folder index file exports', () => {
   it('should export fetchDefaultHolidays from index', () => {
