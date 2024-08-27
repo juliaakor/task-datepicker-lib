@@ -1,5 +1,5 @@
+import { View } from '@constants/calendar';
 import { CalendarViewService } from '@services/index';
-import { View } from '@type/index';
 
 describe('CalendarViewService', () => {
   it('should initialize with the first view and handle view changes correctly', () => {

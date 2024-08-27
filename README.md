@@ -155,7 +155,7 @@ export const MyRangeCalendarComponent = () => (
 
 Pass the following config to turn on or off the features of the calendar:
 
-```json
+```js
 const config = {
   enableHolidays: true,
   enableTasks: true,

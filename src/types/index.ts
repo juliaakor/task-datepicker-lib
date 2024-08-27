@@ -1,8 +1,4 @@
-export enum View {
-  Week = 'week',
-  Month = 'month',
-  Year = 'year',
-}
+import { View } from '@constants/calendar';
 
 export interface Holiday {
   id: string;

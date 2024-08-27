@@ -5,6 +5,7 @@ import { InputItemProps } from '@type/index';
 
 export const InputWrapper = styled.div`
   position: relative;
+  width: max-content;
 `;
 
 export const Label = styled.div`

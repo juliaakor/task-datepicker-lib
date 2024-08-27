@@ -1,4 +1,4 @@
-import { View } from '@type/index';
+import { View } from '@constants/calendar';
 
 export interface WithCalendarViewProps {
   view: View;
