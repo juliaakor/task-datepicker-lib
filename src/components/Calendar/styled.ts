@@ -8,10 +8,10 @@ export const CalendarContainter = styled.div`
 
 export const Container = styled.div`
   position: absolute;
-  z-index: 99;
+  z-index: 97;
 
   ${({ theme }) => `
-    min-width: ${theme.width.minCalerndar}px;
+    max-width: ${theme.width.minCalerndar}px;
     border: ${`${theme.size.smallX}px solid ${theme.colors.primaryBorder}`};
     border-radius: ${theme.size.medium3X}px;
     background: ${theme.colors.bgPrimary};
