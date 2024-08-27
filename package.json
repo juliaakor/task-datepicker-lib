@@ -12,8 +12,8 @@
   "module": "build/index.es.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "clean": "rm -r ./build",
-    "clean:npm": "rm -r node_modules",
+    "clean": "rimraf ./build",
+    "clean:npm": "rimraf ./node_modules",
     "dev": "rollup -c --configPlugin @rollup/plugin-typescript --watch",
     "build": "rollup -c --configPlugin @rollup/plugin-typescript",
     "storybook": "storybook dev -p 6006",
@@ -92,6 +92,7 @@
     "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "rimraf": "^6.0.1",
     "rollup": "^4.20.0",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
