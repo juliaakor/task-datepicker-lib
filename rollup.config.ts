@@ -9,55 +9,64 @@ import { dts } from 'rollup-plugin-dts';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 
+const external = ['react', 'react-dom', 'styled-components', 'luxon'];
+
+const createPlugins = (declarationDir: string) => [
+  peerDepsExternal(),
+  nodeResolve(),
+  commonjs(),
+  typescript({
+    declaration: true,
+    declarationDir,
+    rootDir: 'src',
+    tsconfig: './tsconfig.json',
+  }),
+  terser(),
+  babel({
+    babelHelpers: 'runtime',
+    configFile: './.babelrc',
+    exclude: 'node_modules/**',
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    plugins: ['babel-plugin-styled-components'],
+  }),
+  eslint({
+    exclude: 'node_modules/**',
+  }),
+  postcss({
+    extensions: ['.css'],
+    extract: false,
+    inject: true,
+  }),
+];
+
 export default [
   {
-    external: ['react', 'react-dom', 'styled-components'],
+    external,
     input: './src/index.ts',
     output: [
       {
-        dir: 'build',
-        exports: 'named',
+        dir: 'build/esm',
         format: 'esm',
-        sourcemap: true,
+        sourcemap: false,
       },
+    ],
+    plugins: createPlugins('build/esm/types'),
+  },
+  {
+    external,
+    input: './src/index.ts',
+    output: [
       {
-        exports: 'named',
-        file: 'build/index.cjs.js',
+        dir: 'build/cjs',
         format: 'cjs',
-        sourcemap: true,
+        sourcemap: false,
       },
     ],
-    plugins: [
-      peerDepsExternal(),
-      nodeResolve(),
-      commonjs(),
-      typescript({
-        declaration: true,
-        declarationDir: 'build',
-        sourceMap: true,
-        tsconfig: './tsconfig.json',
-      }),
-      terser(),
-      babel({
-        babelHelpers: 'runtime',
-        configFile: './.babelrc',
-        exclude: 'node_modules/**',
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        plugins: ['babel-plugin-styled-components'],
-      }),
-      eslint({
-        exclude: 'node_modules/**',
-      }),
-      postcss({
-        extensions: ['.css'],
-        extract: false,
-        inject: true,
-      }),
-    ],
+    plugins: createPlugins('build/cjs/types'),
   },
   {
     external: [/\.css$/],
-    input: 'build/src/index.d.ts',
+    input: 'build/esm/types/index.d.ts',
     output: [
       {
         file: 'build/index.d.ts',
