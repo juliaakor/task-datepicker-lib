@@ -74,26 +74,28 @@ export const Modal = ({ date, onAddTask, onClose, onDeleteTask, onUpdateTask, sh
     <PortalProvider>
       <ModalOverlay $visible={show}>
         <OutsideClickProvider onOutsideClick={onClose}>
-          <ModalContainer>
-            <ModalHeader>
-              <h2>Tasks</h2>
-              <Date>{date}</Date>
-              <CloseButton onClick={onClose}>
-                <ClearIcon />
-              </CloseButton>
-            </ModalHeader>
-            <InputContainer>
-              <TextAreaField
-                value={editTaskId ? editTaskName : newTask}
-                onChange={editTaskId ? handleEditTextFieldChange : handleTextFieldChange}
-                placeholder={editTaskId ? 'Edit task' : 'Add new task'}
-                rows={TEXT_AREA_FIELD_ROWS}
-              />
-              <AddButton onClick={editTaskId ? handleUpdateTask : handleAddTask}>
-                {editTaskId ? 'Update' : 'Add'}
-              </AddButton>
-            </InputContainer>
-            <ErrorBoundary>
+          <ErrorBoundary>
+            <ModalContainer>
+              <ModalHeader>
+                <h2>Tasks</h2>
+                <Date>{date}</Date>
+                <CloseButton onClick={onClose}>
+                  <ClearIcon />
+                </CloseButton>
+              </ModalHeader>
+
+              <InputContainer>
+                <TextAreaField
+                  value={editTaskId ? editTaskName : newTask}
+                  onChange={editTaskId ? handleEditTextFieldChange : handleTextFieldChange}
+                  placeholder={editTaskId ? 'Edit task' : 'Add new task'}
+                  rows={TEXT_AREA_FIELD_ROWS}
+                />
+                <AddButton onClick={editTaskId ? handleUpdateTask : handleAddTask}>
+                  {editTaskId ? 'Update' : 'Add'}
+                </AddButton>
+              </InputContainer>
+
               <TaskList>
                 {tasks.map((task) => (
                   <TaskItem key={task.id}>
@@ -110,8 +112,8 @@ export const Modal = ({ date, onAddTask, onClose, onDeleteTask, onUpdateTask, sh
                   </TaskItem>
                 ))}
               </TaskList>
-            </ErrorBoundary>
-          </ModalContainer>
+            </ModalContainer>
+          </ErrorBoundary>
         </OutsideClickProvider>
       </ModalOverlay>
     </PortalProvider>

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-import { CalendarItemsProps, View } from '@type/index';
+import { View } from '@constants/calendar';
+import { CalendarItemsProps } from '@type/index';
 
 export const CalendarItems = styled.div<CalendarItemsProps>`
   display: grid;

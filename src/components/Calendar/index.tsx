@@ -3,12 +3,11 @@ import React, { useState } from 'react';
 
 import { CalendarItem as CalendarItemType } from '@components/CalendarItem/types';
 import { Modal, Input, Header, CalendarItemsList } from '@components/index';
-import { ErrorBoundary, OutsideClickProvider } from '@components/utilities';
-import { MONTH_OFFSET, WEEK_OFFSET, YEARS_OFFSET } from '@constants/calendar';
+import { ErrorBoundary } from '@components/utilities';
+import { MONTH_OFFSET, WEEK_OFFSET, YEARS_OFFSET, View } from '@constants/calendar';
 import { useCalendarModal } from '@hooks/useCalendarModal';
 import { useTasks } from '@hooks/useTasks';
 import { getCurrentDate, getHeaders } from '@lib/calendar';
-import { View } from '@type/index';
 
 import { Button, CalendarWrapper, Container, CalendarContainter } from './styled';
 import { CalendarProps } from './types';
@@ -124,35 +123,34 @@ export const Calendar = ({
           toggleCalendar={handleCalendarToggle}
         />
         {isCalendarOpen && (
-          <OutsideClickProvider onOutsideClick={handleCalendarToggle}>
-            <Container>
-              <ErrorBoundary>
-                <CalendarWrapper>
-                  <Header
-                    title={headerTitle}
-                    handleNextClick={handleHeaderControlsClick(true)}
-                    handlePrevClick={handleHeaderControlsClick(false)}
-                    handleDateTitleClick={handleViewChange}
-                  />
-                  <CalendarItemsList
-                    enableRange={enableRange}
-                    startRange={startRange}
-                    endRange={endRange}
-                    holidays={holidays}
-                    showWeekends={showWeekends}
-                    currentDate={currentDate}
-                    headerDays={headerDays}
-                    selectedDate={selectedDate}
-                    view={view}
-                    handleItemDoubleClick={handleItemDoubleClick}
-                    handleItemClick={handleItemClick}
-                    isWeekStartOnMonday={isWeekStartOnMonday}
-                  />
-                </CalendarWrapper>
-              </ErrorBoundary>
-              {!enableRange && <Button onClick={handleClearInput}>Clear</Button>}
-            </Container>
-          </OutsideClickProvider>
+          <Container>
+            <ErrorBoundary>
+              <CalendarWrapper>
+                <Header
+                  title={headerTitle}
+                  handleNextClick={handleHeaderControlsClick(true)}
+                  handlePrevClick={handleHeaderControlsClick(false)}
+                  handleDateTitleClick={handleViewChange}
+                />
+                <CalendarItemsList
+                  enableRange={enableRange}
+                  startRange={startRange}
+                  endRange={endRange}
+                  holidays={holidays}
+                  showWeekends={showWeekends}
+                  currentDate={currentDate}
+                  headerDays={headerDays}
+                  selectedDate={selectedDate}
+                  view={view}
+                  tasks={tasks}
+                  handleItemDoubleClick={handleItemDoubleClick}
+                  handleItemClick={handleItemClick}
+                  isWeekStartOnMonday={isWeekStartOnMonday}
+                />
+              </CalendarWrapper>
+            </ErrorBoundary>
+            {!enableRange && input && <Button onClick={handleClearInput}>Clear</Button>}
+          </Container>
         )}
       </CalendarContainter>
     </>
