@@ -54,7 +54,6 @@ export default [
         inject: true,
       }),
     ],
-    preserveModules: true,
   },
   {
     external: [/\.css$/],
