@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
+import { FlexCenter } from '@styles/mixins';
+
 export const ErrorBoundaryWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+  ${FlexCenter}
+
+  ${({ theme }) => `
+    width: ${theme.width.full};
+    height: ${theme.width.full};
+  `}
 `;

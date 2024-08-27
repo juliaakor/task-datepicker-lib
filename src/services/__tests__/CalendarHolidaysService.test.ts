@@ -1,8 +1,8 @@
-import { fetchDefaultHolidays } from '@lib/utils/holidays/fetchDefaultHolidays';
+import { fetchDefaultHolidays } from '@lib/holidays/fetchDefaultHolidays';
 import { CalendarHolidaysService } from '@services/index';
 import { Holiday } from '@type/index';
 
-jest.mock('@lib/utils/holidays/fetchDefaultHolidays', () => ({
+jest.mock('@lib/holidays/fetchDefaultHolidays', () => ({
   fetchDefaultHolidays: jest.fn(),
 }));
 
