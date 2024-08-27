@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 
 import { CalendarItem } from '@components/CalendarItem';
 import { CalendarItem as CalendarItemType } from '@components/CalendarItem/types';
+import { View } from '@constants/calendar';
 import { generateMonthView, generateWeekView, generateYearView, getRangeState } from '@lib/calendar';
-import { View } from '@type/index';
 
 import { CalendarItems } from './styled';
 import { CalendarItemsListProps } from './types';

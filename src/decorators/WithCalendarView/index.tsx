@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
 
+import { View } from '@constants/calendar';
 import { CalendarViewService } from '@services/CalendarViewService';
-import { View } from '@type/index';
 
 import { CalendarViewServiceProps, WithCalendarViewProps } from './types';
 

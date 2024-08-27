@@ -1,3 +1,9 @@
+export enum View {
+  Week = 'week',
+  Month = 'month',
+  Year = 'year',
+}
+
 export const WEEK_DAYS_FROM_MON = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
 
 export const WEEK_DAYS_FROM_SUN = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];

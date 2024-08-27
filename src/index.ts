@@ -2,8 +2,9 @@ import { DateTime } from 'luxon';
 
 import { CalendarWrapper } from '@components/CalendarWrapper';
 import { RangeCalendar } from '@components/RangeCalendar';
+import { View } from '@constants/calendar';
 import { Colors, Theme } from '@styles/types';
-import { Holiday, Task, View } from '@type/index';
+import { Holiday, Task } from '@type/index';
 
 export {
   CalendarWrapper as Calendar,

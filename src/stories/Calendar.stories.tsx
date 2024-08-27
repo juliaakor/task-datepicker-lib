@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { CalendarWrapper } from '@components/CalendarWrapper';
-import { View } from '@type/index';
+import { View } from '@constants/calendar';
 
 import { defaultConfig, defaultCustomHolidays, defaultRange } from './defaults';
 

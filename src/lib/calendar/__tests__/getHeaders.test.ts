@@ -1,8 +1,7 @@
 import { DateTime } from 'luxon';
 
-import { WEEK_DAYS_FROM_MON, WEEK_DAYS_FROM_SUN } from '@constants/calendar';
+import { WEEK_DAYS_FROM_MON, WEEK_DAYS_FROM_SUN, View } from '@constants/calendar';
 import { getHeaders } from '@lib/calendar/getHeaders';
-import { View } from '@type/index';
 
 describe('getHeaders', () => {
   const testCases = [

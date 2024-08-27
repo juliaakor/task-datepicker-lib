@@ -4,11 +4,10 @@ import React, { useState } from 'react';
 import { CalendarItem as CalendarItemType } from '@components/CalendarItem/types';
 import { Modal, Input, Header, CalendarItemsList } from '@components/index';
 import { ErrorBoundary } from '@components/utilities';
-import { MONTH_OFFSET, WEEK_OFFSET, YEARS_OFFSET } from '@constants/calendar';
+import { MONTH_OFFSET, WEEK_OFFSET, YEARS_OFFSET, View } from '@constants/calendar';
 import { useCalendarModal } from '@hooks/useCalendarModal';
 import { useTasks } from '@hooks/useTasks';
 import { getCurrentDate, getHeaders } from '@lib/calendar';
-import { View } from '@type/index';
 
 import { Button, CalendarWrapper, Container, CalendarContainter } from './styled';
 import { CalendarProps } from './types';
