@@ -21,7 +21,7 @@ export const TaskTextContent = styled.span`
   white-space: normal;
 `;
 
-export const Tooltip = styled.div`
+export const Tooltip = styled.p`
   ${({ theme }) => `
     background-color: ${theme.colors.bgTooltip};
     color: ${theme.colors.selectedDayText};
